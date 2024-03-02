@@ -21,7 +21,9 @@ const Skills = () => {
       <div className="flex justify-center items-center py-10">
         <div className="grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-5">
           {skills?.map((item) => (
-            <SkillCard item={item} key={item.id} />
+            <div key={item.id}>
+              <SkillCard item={item} />
+            </div>
           ))}
         </div>
       </div>

@@ -10,12 +10,18 @@ const SkillCard = ({ item }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
+      
     }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
+
+  
+
   return (
-    <div className="border group w-[330px] h-36 bg-white rounded-lg py-3 text-zinc-700 shadow-md">
+    <div
+      className="border group w-[330px] h-36 bg-white rounded-lg py-3 text-zinc-700 shadow-md"
+    >
       <div className="flex">
         <div className="w-[30%] flex flex-col justify-center items-center">
           {loading ? (
