@@ -9,13 +9,15 @@ import { TfiLayoutGrid2 } from "react-icons/tfi";
 import { TfiWrite } from "react-icons/tfi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { usePathname, useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const dropdownRef = useRef(null);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   const routes = [
     {
@@ -41,12 +43,8 @@ const Navbar = () => {
     router.push(`/${lowercase}`, { scroll: false });
   };
 
-  const mobileDarkMode = (ff) => {
-    console.log("ok", ff);
-    setIsDropdownOpen(ff);
-  };
-
   useEffect(() => {
+    setMounted(true)
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
@@ -58,6 +56,10 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  if(!mounted){
+    return null
+  }
 
   return (
     <>
@@ -77,16 +79,16 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
-            {isDark ? (
+            {theme === "dark" ? (
               <button
-                onClick={() => setIsDark(!isDark)}
+                onClick={() => setTheme("light")}
                 className="hover:bg-gray-200 rounded-full p-2"
               >
                 <MdLightMode fontSize={"1.1rem"} />
               </button>
             ) : (
               <button
-                onClick={() => setIsDark(!isDark)}
+                onClick={() => setTheme("dark")}
                 className="hover:bg-gray-200 rounded-full p-2"
               >
                 <FaMoon fontSize={"1.1rem"} />
@@ -160,9 +162,9 @@ const Navbar = () => {
             </button>
             {isDropdownOpen === true ? (
               <div className="absolute -top-20 right-0 mb-5 z-50 bg-white rounded-xl py-2 shadow-lg p-2">
-                {isDark ? (
+                {theme === "dark" ? (
                   <button
-                    onClick={() => setIsDark(!isDark)}
+                    onClick={() => setTheme("light")}
                     className="p-2 flex gap-1 items-center"
                   >
                     <MdLightMode fontSize={"1.1rem"} />
@@ -170,7 +172,7 @@ const Navbar = () => {
                   </button>
                 ) : (
                   <button
-                    onClick={() => setIsDark(!isDark)}
+                    onClick={() => setTheme("dark")}
                     className="p-2 flex gap-1 items-center"
                   >
                     <FaMoon fontSize={"1.1rem"} />

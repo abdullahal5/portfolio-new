@@ -19,7 +19,7 @@ const font = Roboto_Mono({
 const Banner = () => {
   return (
     <>
-      <div className="flex lg:gap-0 md:gap-0 gap-10 lg:flex-row md:flex-row flex-col lg:h-[100vh] md:h-[100vh] justify-center items-center mx-5">
+      <div className="flex lg:gap-0 md:gap-0 gap-10 lg:flex-row md:flex-row flex-col lg:py-10 md:py-5 justify-center items-center mx-5">
         <div>
           <div className="lg:pt-32 md:pt-32 pt-5 flex flex-col justify-center leading-5">
             <span className="lg:text-2xl md:text-2xl texl-xl leading-3 font-semibold text-zinc-700 tracking-wider">
@@ -30,7 +30,9 @@ const Banner = () => {
               Fahim
             </span>
             <br />
-            <span className="lg:text-4xl md:text-3xl text-3xl lg:leading-3 md:leading-3 font-semibold text-zinc-700 tracking-widest ">
+            <span
+              className={`lg:text-4xl md:text-3xl text-3xl lg:leading-3 md:leading-3 font-semibold text-zinc-700 dark:text-white tracking-widest`}
+            >
               <TypeAnimation
                 sequence={[
                   `MERN Stack Developer`,
