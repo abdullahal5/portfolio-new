@@ -1,23 +1,17 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { MdLightMode } from "react-icons/md";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa6";
 import { TfiLayoutGrid2 } from "react-icons/tfi";
 import { TfiWrite } from "react-icons/tfi";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { usePathname, useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
-  const dropdownRef = useRef(null);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState("light");
 
   const routes = [
     {
@@ -38,32 +32,32 @@ const Navbar = () => {
     },
   ];
 
-  const handleRoutes = (route) => {
-    const lowercase = route.toLowerCase();
-    router.push(`/${lowercase}`, { scroll: false });
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
+
+  const handleSwitchThemes = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
   };
 
   useEffect(() => {
-    setMounted(true)
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
+    const getItem = localStorage?.getItem("theme");
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  if(!mounted){
-    return null
-  }
+    if (getItem === "light") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <>
-      <nav className="fixed z-50 backdrop-blur-md backdrop:filter bg-zinc-50 bg-opacity-60 lg:w-[1100px] md:w-[1100px] border-2 bg-transparent py-4 rounded-r-full border-gray-200 rounded-l-full mt-10 mx-auto w-full lg:block md:block hidden">
+      <nav className="fixed z-50 backdrop-blur-md backdrop:filter bg-zinc-50 dark:bg-neutral-900 dark:bg-transparent dark:bg-opacity-80 bg-opacity-60 lg:w-[1100px] md:w-[1100px] border-2 bg-transparent py-4 rounded-r-full border-gray-200 rounded-l-full mt-10 mx-auto w-full lg:block md:block hidden dark:border-violet-500/10 dark:backdrop-filter dark:border-2">
         <div className="gap-7 text-[.875rem] font-semibold text-zinc-600 uppercase">
           <div className="flex justify-between px-10 items-center">
             <div className="flex items-center justify-between gap-10 tracking-wider">
@@ -72,7 +66,9 @@ const Navbar = () => {
                   key={Math.random()}
                   href={item.path}
                   className={`p-1 hover:text-violet-500 ${
-                    pathname === item.path ? "text-violet-500" : ""
+                    pathname === item.path
+                      ? "text-violet-500"
+                      : "dark:text-zinc-500"
                   }`}
                 >
                   <p>{item.name}</p>
@@ -80,44 +76,41 @@ const Navbar = () => {
               ))}
             </div>
             {theme === "dark" ? (
-              <button
-                onClick={() => setTheme("light")}
-                className="hover:bg-gray-200 rounded-full p-2"
-              >
-                <MdLightMode fontSize={"1.1rem"} />
+              <button onClick={handleSwitchThemes} className="rounded-full p-2">
+                <FaMoon fontSize={"1.1rem"} />
               </button>
             ) : (
               <button
-                onClick={() => setTheme("dark")}
-                className="hover:bg-gray-200 rounded-full p-2"
+                onClick={handleSwitchThemes}
+                className="hover:text-zinc-200 rounded-full p-2"
               >
-                <FaMoon fontSize={"1.1rem"} />
+                <MdLightMode fontSize={"1.1rem"} />
               </button>
             )}
           </div>
         </div>
       </nav>
       {/* Mobile Navbar */}
-      <nav className="fixed z-50 bottom-0 left-0 w-full backdrop-blur-md backdrop:filter bg-zinc-50 bg-opacity-60 border-2 bg-transparent py-2 border-gray-200 mx-auto lg:hidden md:hidden block h-14">
-        <div className="items-center gap-10 tracking-wider flex justify-around text center mx-auto relative">
-          <button
+      <nav className="fixed z-50 bottom-0 left-0 w-full backdrop-blur-md backdrop:filter bg-zinc-50 bg-opacity-60 border-2 bg-transparent py-2 dark:bg-neutral-900 dark:bg-transparent dark:bg-opacity-80 dark:border-t-violet-500/10 dark:border-b-0 dark:border-l-0 dark:border-r-0 border-gray-200 mx-auto lg:hidden md:hidden block h-14">
+        <div className="items-center gap-10 tracking-wider flex justify-around text center mx-auto relative dark:text-zinc-300">
+          <Link
+            href={"/"}
             className={`${
               pathname === "/"
                 ? "text-violet-500 flex flex-col justify-center items-center"
                 : ""
             }`}
-            onClick={() => handleRoutes("/")}
           >
             <IoHomeOutline className="hover:text-violet-500 h-[20px] w-[20px]" />
             {pathname === "/" ? <p className="text-sm uppercase">Home</p> : ""}
-          </button>
-          <button
+          </Link>
+          <Link
+            href={"/about"}
             className={`${
               pathname === "/about"
                 ? "text-violet-500 flex flex-col justify-center items-center"
                 : ""
             }`}
-            onClick={() => handleRoutes("About")}
           >
             <FaRegUser className="hover:text-violet-500 h-[20px] w-[20px] " />
             {pathname === "/about" ? (
@@ -125,14 +118,14 @@ const Navbar = () => {
             ) : (
               ""
             )}
-          </button>
-          <button
+          </Link>
+          <Link
+            href={"/projects"}
             className={`${
               pathname === "/projects"
                 ? "text-violet-500 flex flex-col justify-center items-center"
                 : ""
             }`}
-            onClick={() => handleRoutes("Projects")}
           >
             <TfiLayoutGrid2 className="hover:text-violet-500 h-[20px] w-[20px]" />
             {pathname === "/projects" ? (
@@ -140,14 +133,14 @@ const Navbar = () => {
             ) : (
               ""
             )}
-          </button>
-          <button
+          </Link>
+          <Link
+            href={"/article"}
             className={`${
               pathname === "/article"
                 ? "text-violet-500 flex flex-col justify-center items-center"
                 : ""
             }`}
-            onClick={() => handleRoutes("Article")}
           >
             <TfiWrite className="hover:text-violet-500 h-[20px] w-[20px]" />
             {pathname === "/article" ? (
@@ -155,35 +148,19 @@ const Navbar = () => {
             ) : (
               ""
             )}
-          </button>
-          <div ref={dropdownRef}>
-            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-              <BsThreeDotsVertical className="hover:text-violet-500 h-[20px] w-[20px]" />
+          </Link>
+          {theme === "dark" ? (
+            <button onClick={handleSwitchThemes} className="rounded-full p-2">
+              <FaMoon fontSize={"1.1rem"} />
             </button>
-            {isDropdownOpen === true ? (
-              <div className="absolute -top-20 right-0 mb-5 z-50 bg-white rounded-xl py-2 shadow-lg p-2">
-                {theme === "dark" ? (
-                  <button
-                    onClick={() => setTheme("light")}
-                    className="p-2 flex gap-1 items-center"
-                  >
-                    <MdLightMode fontSize={"1.1rem"} />
-                    Light Mode
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setTheme("dark")}
-                    className="p-2 flex gap-1 items-center"
-                  >
-                    <FaMoon fontSize={"1.1rem"} />
-                    Dark Mode
-                  </button>
-                )}
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+          ) : (
+            <button
+              onClick={handleSwitchThemes}
+              className="hover:text-zinc-200 rounded-full p-2"
+            >
+              <MdLightMode fontSize={"1.1rem"} />
+            </button>
+          )}
         </div>
       </nav>
     </>

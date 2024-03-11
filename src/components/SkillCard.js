@@ -10,18 +10,13 @@ const SkillCard = ({ item }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-      
     }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
 
-  
-
   return (
-    <div
-      className="border group w-[330px] h-36 bg-white rounded-lg py-3 text-zinc-700 shadow-md"
-    >
+    <div className="border dark:border-neutral-800 group lg:w-[330px] md:w-[330px] w-[300px] h-36 dark:bg-black bg-white rounded-lg py-3 text-zinc-700 shadow-md dark:text-zinc-300">
       <div className="flex">
         <div className="w-[30%] flex flex-col justify-center items-center">
           {loading ? (
@@ -43,7 +38,7 @@ const SkillCard = ({ item }) => {
           <h1 className="text-xl font-semibold mb-3">
             {loading ? <Skeleton width="130px" count={1} /> : item.name}
           </h1>
-          <span className="bg-gray-200 rounded-lg px-2 py-1">
+          <span className="bg-gray-200 dark:border dark:border-neutral-800 dark:bg-black rounded-lg px-2 py-1">
             {loading ? <Skeleton width="80px" count={1} /> : item.tag}
           </span>
           <div className={`${loading ? "pt-6" : "pt-7"}`}>

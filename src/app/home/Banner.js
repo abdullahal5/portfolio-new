@@ -19,10 +19,10 @@ const font = Roboto_Mono({
 const Banner = () => {
   return (
     <>
-      <div className="flex lg:gap-0 md:gap-0 gap-10 lg:flex-row md:flex-row flex-col lg:py-10 md:py-5 justify-center items-center mx-5">
+      <div className="flex lg:gap-0 md:gap-0 gap-10 lg:flex-row md:flex-row flex-col lg:py-10 md:py-5 justify-center items-center mx-5 ">
         <div>
           <div className="lg:pt-32 md:pt-32 pt-5 flex flex-col justify-center leading-5">
-            <span className="lg:text-2xl md:text-2xl texl-xl leading-3 font-semibold text-zinc-700 tracking-wider">
+            <span className="lg:text-2xl md:text-2xl texl-xl leading-3 font-semibold text-zinc-700 tracking-wider dark:text-zinc-300">
               Hi! all I&apos;m
             </span>
             <br />
@@ -31,7 +31,7 @@ const Banner = () => {
             </span>
             <br />
             <span
-              className={`lg:text-4xl md:text-3xl text-3xl lg:leading-3 md:leading-3 font-semibold text-zinc-700 dark:text-white tracking-widest`}
+              className={`lg:text-4xl md:text-3xl text-3xl lg:leading-3 md:leading-3 font-semibold text-zinc-700 tracking-widest dark:text-zinc-300`}
             >
               <TypeAnimation
                 sequence={[
@@ -47,7 +47,7 @@ const Banner = () => {
             </span>
           </div>
           <p
-            className={`pt-5 text-lg text-zinc-700 tracking-widest ${font.className}`}
+            className={`pt-5 text-lg text-zinc-700 tracking-widest ${font.className} dark:text-zinc-300`}
           >
             I&apos;m a software developer based in Bangladesh, <br />
             specializing in cutting-edge web and mobile <br /> technologies as
@@ -64,7 +64,7 @@ const Banner = () => {
               Resume
             </button>
           </div>
-          <div className="text-zinc-600 flex items-center gap-6 pt-7">
+          <div className="text-zinc-600 flex items-center gap-6 pt-7 dark:text-zinc-500">
             <span>
               <MdOutlineMailOutline
                 fontSize={"1.7rem"}

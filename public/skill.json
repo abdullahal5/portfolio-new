@@ -1,29 +1,29 @@
 [
-    {
-      "id": 1,
-      "name": "HTML",
-      "tag": "Markup language",
-      "image": "https://i.ibb.co/MpmBXSJ/html.jpg",
-      "progress": "95"
-    },
-    {
-      "id": 2,
-      "name": "CSS3",
-      "tag": "Style Sheet",
-      "image": "https://i.ibb.co/bLb474w/css.jpg",
-      "progress": "70"
-    },
-    {
-      "id": 3,
-      "name": "Tailwind CSS",
-      "tag": "CSS Framework",
-      "image": "https://i.ibb.co/5k31DyY/tailwind.jpg",
-      "progress": "80"
-    },
-    {
+  {
+    "id": 1,
+    "name": "HTML",
+    "tag": "Markup language",
+    "image": "https://i.ibb.co/ZdmDsZh/html-removebg-preview.png",
+    "progress": "95"
+  },
+  {
+    "id": 2,
+    "name": "CSS3",
+    "tag": "Style Sheet",
+    "image": "https://i.ibb.co/bH10Fbj/css-removebg-preview.png",
+    "progress": "70"
+  },
+  {
+    "id": 3,
+    "name": "Tailwind CSS",
+    "tag": "CSS Framework",
+    "image": "https://i.ibb.co/h8fhTXL/tailwind-removebg-preview.png",
+    "progress": "80"
+  },
+  {
     "id": 4,
     "name": "JavaScript (ES6)",
-    "image": "https://i.ibb.co/MhK6fCR/javascript.jpg",
+    "image": "https://i.ibb.co/GM24BcF/javascript-removebg-preview.png",
     "tag": "Language",
     "progress": "60"
   },
@@ -38,28 +38,28 @@
     "id": 6,
     "name": "MongoDB + Mongoose",
     "tag": "No SQL Database",
-    "image": "https://i.ibb.co/Lr2P1rj/mongodb.jpg",
+    "image": "https://i.ibb.co/hsq9JZ3/mongodb-removebg-preview.png",
     "progress": "60"
   },
   {
     "id": 7,
     "name": "NodeJS",
     "tag": "JavaScript runtime",
-    "image": "https://i.ibb.co/RQMtTtn/nodejs.jpg",
+    "image": "https://i.ibb.co/FKtDz2q/nodejs-removebg-preview.png",
     "progress": "60"
   },
   {
     "id": 8,
     "name": "ExpressJS",
     "tag": "NodeJS Framework",
-    "image": "https://i.ibb.co/3TkKznt/download-1.png",
+    "image": "https://i.ibb.co/98zkBdN/download-1-removebg-preview.png",
     "progress": "70"
   },
   {
     "id": 9,
     "name": "NextJS",
     "tag": "ReactJS Framework",
-    "image": "https://i.ibb.co/Qv0MFKG/resize-17088470272018786224download5.png",
+    "image": "https://i.ibb.co/2NMcPVZ/download-2-1.png",
     "progress": "70"
   }
 ]
