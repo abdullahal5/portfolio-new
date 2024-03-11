@@ -13,6 +13,7 @@ const FeaturedProject = () => {
                 src="https://i.ibb.co/F3XYkx6/0e8b3f11ed875882a688bcf581f22842.jpg"
                 className="object-cover h-[98%] group-hover:rounded-xl rounded-xl group-hover:scale-105 transition-all duration-300 ease-in-out absolute dark:bg-black dark:opacity-70 inset-0 group-hover:bg-black "
                 width={500}
+                loading="lazy"
                 height={100}
                 alt="feature image"
               />
@@ -32,6 +33,7 @@ const FeaturedProject = () => {
                 className="object-cover h-[98%] group-hover:rounded-xl rounded-xl group-hover:scale-105 transition-all duration-300 ease-in-out absolute dark:bg-black dark:opacity-70 inset-0 group-hover:bg-black "
                 width={500}
                 height={100}
+                loading="lazy"
                 alt="feature image"
               />
               <div className="absolute inset-0 rounded-xl group-hover:bg-black duration-300 ease-in-out transition-all opacity-40"></div>
@@ -50,6 +52,7 @@ const FeaturedProject = () => {
                 className="object-cover h-[98%] group-hover:rounded-xl rounded-xl group-hover:scale-105 transition-all duration-300 ease-in-out absolute dark:bg-black dark:opacity-70 inset-0 group-hover:bg-black "
                 width={500}
                 height={100}
+                loading="lazy"
                 alt="feature image"
               />
               <div className="absolute inset-0 rounded-xl group-hover:bg-black duration-300 ease-in-out transition-all opacity-40"></div>

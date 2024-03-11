@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "title": "EchoScript",
+    "coverImage": "https://i.ibb.co/grxPCsT/Screenshot-2023-11-26-112047.png",
+    "image": "https://i.ibb.co/Cw9JSqV/download-2.jpg",
+    "sub": "Web Development",
+    "technologies": ["React", "Javscript", "MongoDB", "ExpressJS", "NodeJS"],
+    "features": [
+      "Users can explore electronic goods in the shop and make an orde",
+      "Users need to sign up to make an order and be able to see the user dashboard",
+      "Admin can manage orders, add or remove products, and make another admin"
+    ],
+    "tag": ["E-commerce", "Full Stack", "Team"],
+    "githubLink": "https://github.com/abdullahal5",
+    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+  },
+  {
+    "id": 2,
+    "title": "NextJs",
+    "coverImage": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
+    "image": "https://i.ibb.co/nb7YkKK/book-with-tree-digital-art-style-education-day-23-2151164288.jpg",
+    "sub": "Web Development",
+    "technologies": [
+      "React",
+      "Javscript",
+      "MongoDB",
+      "ExpressJS",
+      "NodeJS",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+      "Bootstrap",
+      "NextJS",
+      "TypeScript",
+      "Redux",
+      "Mongoose",
+      "Socket io"
+    ],
+    "features": [
+      "Users can explore electronic goods in the shop and make an orde",
+      "Users need to sign up to make an order and be able to see the user dashboard",
+      "Admin can manage orders, add or remove products, and make another admin"
+    ],
+    "tag": ["E-commerce", "Full Stack", "Team"],
+    "githubLink": "https://github.com/abdullahal5",
+    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+  },
+  {
+    "id": 3,
+    "title": "ecommerce",
+    "coverImage": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
+    "image": "https://i.ibb.co/fQDdkVj/view-illuminated-neon-gaming-keyboard-setup-controller-23-2149529367.jpg",
+    "sub": "Web Development",
+    "technologies": ["React", "Javscript", "MongoDB", "ExpressJS", "NodeJS"],
+    "features": [
+      "Users can explore electronic goods in the shop and make an orde",
+      "Users need to sign up to make an order and be able to see the user dashboard",
+      "Admin can manage orders, add or remove products, and make another admin"
+    ],
+    "tag": ["E-commerce", "Full Stack", "Team"],
+    "githubLink": "https://github.com/abdullahal5",
+    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+  },
+  {
+    "id": 4,
+    "title": "article",
+    "coverImage": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
+    "image": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
+    "sub": "Web Development",
+    "technologies": ["React", "Javscript", "MongoDB", "ExpressJS", "NodeJS"],
+    "features": [
+      "Users can explore electronic goods in the shop and make an orde",
+      "Users need to sign up to make an order and be able to see the user dashboard",
+      "Admin can manage orders, add or remove products, and make another admin"
+    ],
+    "tag": ["E-commerce", "Full Stack", "Team"],
+    "githubLink": "https://github.com/abdullahal5",
+    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+  }
+]

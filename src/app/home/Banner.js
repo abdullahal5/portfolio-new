@@ -95,6 +95,7 @@ const Banner = () => {
           src="https://i.ibb.co/68LC2r3/hero-img.webp"
           width={500}
           height={500}
+          loading="lazy"
           alt="banner-img"
         />
       </div>

@@ -3,6 +3,7 @@ import Skills from "./Skills";
 import FeaturedProject from "./FeaturedProject";
 import WhatIDo from "./WhatIDo";
 import Footer from "@/components/Footer";
+import Contact from "./Contact";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <Skills />
       <FeaturedProject />
       <WhatIDo />
+      <Contact/>
     </div>
   );
 };

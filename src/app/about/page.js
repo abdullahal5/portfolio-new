@@ -27,6 +27,7 @@ const About = () => {
             src="https://i.ibb.co/68LC2r3/hero-img.webp"
             width={400}
             height={400}
+            loading="lazy"
             alt="banner-img"
           />
           <div className="">
@@ -149,6 +150,7 @@ const About = () => {
                   src="https://i.ibb.co/68LC2r3/hero-img.webp"
                   width={150}
                   height={150}
+                  loading="lazy"
                   alt="banner-img"
                 />
               </div>

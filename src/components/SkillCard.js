@@ -27,6 +27,7 @@ const SkillCard = ({ item }) => {
               className="w-20 rounded-full group-hover:scale-110 duration-300 transition-all ease-in-out"
               width={150}
               height={100}
+              loading="lazy"
               alt="image"
             />
           )}

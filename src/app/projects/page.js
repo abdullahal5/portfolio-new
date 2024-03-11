@@ -1,17 +1,27 @@
 "use client";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import axios from "axios";
+import ProjectsC from "@/components/ProjectsC";
 
 const Projects = () => {
   const [input, setInput] = useState("");
+  const [data, setData] = useState([]);
   //   console.log(input);
 
   const getInputText = (e) => {
     setInput(e.target.value);
   };
+
+  const fetchData = async () => {
+    axios.get("/project.json").then((res) => setData(res.data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -35,7 +45,6 @@ const Projects = () => {
               onChange={getInputText}
               value={input}
               type="text"
-              placeholder="Search Project"
               className="dark:bg-black rounded-full border-violet-500 dark:text-zinc-300 text-zinc-600 border outline-none bg-white py-3 pl-5 pr-10"
             />
             {input?.length > 0 ? (
@@ -50,62 +59,14 @@ const Projects = () => {
         </div>
         <div className="flex items-center justify-center">
           <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
-            <div className="border lg:w-[500px] md:w-[500px] w-[300px] bg-[url('https://i.ibb.co/Z1yyQvG/download-1.jpg')] lg:h-[300px] md:h-[300] h-52 duration-300 transform hover:scale-105 rounded-lg relative dark:border-neutral-800 cursor-pointer">
-              <div className="bg-gradient-to-b from-white from-[0%] via-neutral-900 via-[75%] to-neutral-950 to-[100%] h-full opacity-60 rounded-lg">
-                <div className="flex items-end justify-start">
-                  <div className="absolute bottom-5 left-5">
-                    <h1 className="text-[45px] font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      EchoScript
-                    </h1>
-                    <p className="text-lg font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      Portfolio website
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="border lg:w-[500px] md:w-[500px] w-[300px] bg-[url('https://i.ibb.co/9t5Mk8r/images.jpg')] lg:h-[300px] md:h-[300] h-52 duration-300 transform hover:scale-105 rounded-lg relative dark:border-neutral-800 cursor-pointer">
-              <div className="bg-gradient-to-b from-white from-[0%] via-neutral-900 via-[75%] to-neutral-950 to-[100%] h-full opacity-60 rounded-lg">
-                <div className="flex items-end justify-start">
-                  <div className="absolute bottom-5 left-5">
-                    <h1 className="text-[45px] font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      Ecommerce
-                    </h1>
-                    <p className="text-lg font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      ecommerce website
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="border lg:w-[500px] md:w-[500px] w-[300px] bg-[url('https://i.ibb.co/Cw9JSqV/download-2.jpg')] lg:h-[300px] md:h-[300] h-52 duration-300 transform hover:scale-105 rounded-lg relative dark:border-neutral-800 cursor-pointer">
-              <div className="bg-gradient-to-b from-white from-[0%] via-neutral-900 via-[75%] to-neutral-950 to-[100%] h-full opacity-60 rounded-lg">
-                <div className="flex items-end justify-start">
-                  <div className="absolute bottom-5 left-5">
-                    <h1 className="text-[45px] font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      Dashboard
-                    </h1>
-                    <p className="text-lg font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      website
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="border lg:w-[500px] md:w-[500px] w-[300px] bg-[url('https://i.ibb.co/yV2w448/images-1.jpg')] lg:h-[300px] md:h-[300] h-52 duration-300 transform hover:scale-105 rounded-lg relative dark:border-neutral-800 cursor-pointer">
-              <div className=" bg-gradient-to-b from-white from-[0%] via-neutral-900 via-[75%] to-neutral-950 to-[100%] h-full opacity-60 rounded-lg">
-                <div className="flex items-end justify-start">
-                  <div className="absolute bottom-5 left-5">
-                    <h1 className="text-[45px] font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      NextJs project
-                    </h1>
-                    <p className="text-lg font-bold bg-gradient-to-r from-white from-[100%] to-white to-[100%] bg-clip-text text-transparent">
-                      website
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {data.map((item) => (
+              <ProjectsC
+                key={item.id}
+                title={item.title}
+                image={item.image}
+                sub={item.sub}
+              />
+            ))}
           </div>
         </div>
       </div>
