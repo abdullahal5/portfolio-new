@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { BsDiscord } from "react-icons/bs";
 import { FaFacebook, FaGithubAlt, FaLinkedinIn } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 
 const Footer = () => {
+  const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=abdullahalfahin183@gmail.com&su=Subject&body=Body`;
   return (
     <div>
       <hr className="my-10 dark:border-neutral-600" />
@@ -49,31 +51,53 @@ const Footer = () => {
           <span className="border p-2 rounded-lg border-violet-500 text-violet-500 cursor-pointer">
             Resume
           </span>
-          <div className="text-zinc-600 flex items-center gap-6 pt-5 dark:text-zinc-500 justify-center">
-            <span>
+          <div className="text-zinc-600 flex items-center gap-6 pt-7 dark:text-zinc-500">
+            <a target="_blank" rel="noopener noreferrer" href={mailtoLink}>
               <MdOutlineMailOutline
                 fontSize={"1.7rem"}
                 className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
               />
-            </span>
-            <span>
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/abdullahal5"
+            >
               <FaGithubAlt
                 fontSize={"1.7rem"}
                 className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
               />
-            </span>
-            <span>
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/abdullah-al-fahim-7a5593286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            >
               <FaLinkedinIn
                 fontSize={"1.7rem"}
                 className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
               />
-            </span>
-            <span>
+            </a>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://www.facebook.com/abdullahal.fahim.9421"
+            >
               <FaFacebook
                 fontSize={"1.7rem"}
                 className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
               />
-            </span>
+            </a>
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://discord.com/users/fahim4026"
+            >
+              <BsDiscord
+                fontSize={"1.7rem"}
+                className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
+              />
+            </a>
           </div>
         </div>
       </div>

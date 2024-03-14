@@ -15,12 +15,19 @@ import { IoMdHeart } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
 import { useState } from "react";
 import { FaChevronUp } from "react-icons/fa";
+import GoToTop from "@/components/GoToTop";
+import { BsDiscord } from "react-icons/bs";
 
 const About = () => {
   const [showInfo, setShowInfo] = useState(false);
+  const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=abdullahalfahin183@gmail.com&su=Subject&body=Body`;
+
   return (
     <div>
       <Navbar />
+      <div className="lg:block md:block hidden">
+        <GoToTop />
+      </div>
       <div className="lg:pt-36 md:pt-36 pt-5 flex lg:flex-row md:flex-row flex-col gap-5 mx-5">
         <div className="w-80 lg:block md:block hidden border rounded-xl text-center max-h-[730px] dark:border-neutral-800">
           <Image
@@ -104,30 +111,52 @@ const About = () => {
                 </div>
               </div>
               <div className="text-zinc-600 justify-center flex items-center gap-6 py-7 dark:text-zinc-500">
-                <span>
+                <a target="_blank" rel="noopener noreferrer" href={mailtoLink}>
                   <MdOutlineMailOutline
                     fontSize={"1.7rem"}
                     className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                   />
-                </span>
-                <span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/abdullahal5"
+                >
                   <FaGithubAlt
                     fontSize={"1.7rem"}
                     className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                   />
-                </span>
-                <span>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/in/abdullah-al-fahim-7a5593286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                >
                   <FaLinkedinIn
                     fontSize={"1.7rem"}
                     className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                   />
-                </span>
-                <span>
+                </a>
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://www.facebook.com/abdullahal.fahim.9421"
+                >
                   <FaFacebook
                     fontSize={"1.7rem"}
                     className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                   />
-                </span>
+                </a>
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://discord.com/users/fahim4026"
+                >
+                  <BsDiscord
+                    fontSize={"1.7rem"}
+                    className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -231,30 +260,56 @@ const About = () => {
                   </div>
                 </div>
                 <div className="text-zinc-600 justify-center flex items-center gap-6 py-7 dark:text-zinc-500">
-                  <span>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={mailtoLink}
+                  >
                     <MdOutlineMailOutline
                       fontSize={"1.7rem"}
                       className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                     />
-                  </span>
-                  <span>
+                  </a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://github.com/abdullahal5"
+                  >
                     <FaGithubAlt
                       fontSize={"1.7rem"}
                       className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                     />
-                  </span>
-                  <span>
+                  </a>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.linkedin.com/in/abdullah-al-fahim-7a5593286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  >
                     <FaLinkedinIn
                       fontSize={"1.7rem"}
                       className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                     />
-                  </span>
-                  <span>
+                  </a>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://www.facebook.com/abdullahal.fahim.9421"
+                  >
                     <FaFacebook
                       fontSize={"1.7rem"}
                       className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
                     />
-                  </span>
+                  </a>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://discord.com/users/fahim4026"
+                  >
+                    <BsDiscord
+                      fontSize={"1.7rem"}
+                      className="cursor-pointer transition-all duration-300 hover:-translate-y-3 hover:text-violet-500"
+                    />
+                  </a>
                 </div>
               </div>
             ) : (

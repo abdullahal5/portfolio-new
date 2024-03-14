@@ -33,7 +33,7 @@ const ProjectDetails = ({ params }) => {
 
   useEffect(() => {
     fetchData();
-  }, [params?.title]);
+  }, []);
 
   return (
     <>
