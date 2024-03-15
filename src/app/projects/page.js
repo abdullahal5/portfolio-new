@@ -25,6 +25,13 @@ const Projects = () => {
     setLoading(false);
   }, []);
 
+  console.log(input);
+
+  const matchedProject = data?.filter((item) =>
+    (item?.title)?.toLowerCase()?.includes(input?.toLowerCase())
+  );
+
+
   return (
     <div>
       <Navbar />
@@ -43,7 +50,7 @@ const Projects = () => {
         </h1>
         <div className="py-10 flex lg:flex-row md:flex-row flex-col items-center lg:justify-between md:justify-between justify-center lg:gap-0 md:gap-0 gap-10">
           <span className="text-violet-500 text-xl font-semibold border rounded-full px-5 py-3 border-violet-500 dark:bg-black bg-white">
-            All Projects {input.length > 0 ? "(4 project)" : ""}
+            All Projects {input.length > 0 ? matchedProject?.length : ""}
           </span>
           <div className="relative">
             <input
@@ -69,7 +76,7 @@ const Projects = () => {
               <p>loading...</p>
             ) : (
               <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
-                {data.map((item) => (
+                {matchedProject?.map((item) => (
                   <ProjectsC
                     key={item.id}
                     title={item.title}

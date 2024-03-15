@@ -40,9 +40,9 @@ const Footer = () => {
             </Link>
             <Link
               className="hover:text-violet-500 hover:underline border-violet-500"
-              href="/article"
+              href="/achievements"
             >
-              Article
+              Achievements
             </Link>
           </div>
         </div>

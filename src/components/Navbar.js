@@ -6,8 +6,9 @@ import { MdLightMode } from "react-icons/md";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa6";
 import { TfiLayoutGrid2 } from "react-icons/tfi";
-import { TfiWrite } from "react-icons/tfi";
 import { usePathname } from "next/navigation";
+import { IoMdTrophy } from "react-icons/io";
+import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -27,8 +28,8 @@ const Navbar = () => {
       name: "Projects",
     },
     {
-      path: "/article",
-      name: "Article",
+      path: "/achievements",
+      name: "Achievements",
     },
   ];
 
@@ -135,16 +136,16 @@ const Navbar = () => {
             )}
           </Link>
           <Link
-            href={"/article"}
+            href={"/achievements"}
             className={`${
-              pathname === "/article"
+              pathname === "/achievements"
                 ? "text-violet-500 flex flex-col justify-center items-center"
                 : ""
             }`}
           >
-            <TfiWrite className="hover:text-violet-500 h-[20px] w-[20px]" />
-            {pathname === "/article" ? (
-              <p className="text-sm uppercase">Article</p>
+            <IoMdTrophy className="hover:text-violet-500 h-[20px] w-[20px]" />
+            {pathname === "/achievements" ? (
+              <p className="text-sm uppercase">Achieve</p>
             ) : (
               ""
             )}

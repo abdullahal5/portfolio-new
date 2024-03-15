@@ -1,16 +1,16 @@
 import GoToTop from "@/components/GoToTop";
 import Navbar from "@/components/Navbar";
 
-const Article = () => {
+const Achievements = () => {
   return (
     <div>
       <Navbar />
       <div className="lg:block md:block hidden">
         <GoToTop />
       </div>
-      article
+      Achievements
     </div>
   );
 };
 
-export default Article;
+export default Achievements;

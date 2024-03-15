@@ -76,7 +76,7 @@ const ProjectDetails = ({ params }) => {
                 </div>
               </div>
               <div className="mt-10 border dark:border-neutral-800 w-full lg:h-80 md:h-80 h-auto rounded-lg p-4">
-                <div className="flex lg:flex-row md:flex-row flex-col lg:items-start md:items-start items-center lg:justify-between md:justify-between justify-center gap-x-5 w-[100%] lg:gap-0 md:gap-0 gap-10">
+                <div className="flex lg:flex-row md:flex-row flex-col lg:items-start md:items-start items-center lg:justify-between md:justify-between justify-center gap-x-5 w-[100%] lg:gap-5 md:gap-5 gap-10">
                   <div className="lg:w-[50%] md:w-[50%] w-auto text-zinc-700 dark:text-zinc-300">
                     <h1 className="text-3xl font-bold">Features</h1>
                     <div className="space-y-2 mt-5">
