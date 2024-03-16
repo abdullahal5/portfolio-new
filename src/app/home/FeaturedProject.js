@@ -1,69 +1,42 @@
+"use client";
+import ProjectsC from "@/components/ProjectsC";
 import SectionTitle from "@/components/SectionTitle";
-import Image from "next/image";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const FeaturedProject = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    axios.get("/project.json").then((res) => setData(res.data));
+  };
+
+  useEffect(() => {
+    fetchData();
+    setLoading(false);
+  }, []);
+
   return (
     <div className="mx-5">
       <SectionTitle title={"Prime Wokrs"} />
-      <div className="flex items-center justify-center py-10">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-          <div className="w-[300px] group h-[290px] rounded-xl bg-white dark:bg-black dark:border-neutral-800 border overflow-hidden cursor-pointer">
-            <div className="h-[70%] rounded-xl relative">
-              <Image
-                src="https://i.ibb.co/F3XYkx6/0e8b3f11ed875882a688bcf581f22842.jpg"
-                className="object-cover h-[98%] group-hover:rounded-xl rounded-xl group-hover:scale-105 transition-all duration-300 ease-in-out absolute dark:bg-black dark:opacity-70 inset-0 group-hover:bg-black "
-                width={500}
-                loading="lazy"
-                height={100}
-                alt="feature image"
-              />
-              <div className="absolute inset-0 rounded-xl group-hover:bg-black duration-300 ease-in-out transition-all opacity-40"></div>
+
+      <div className="flex items-center justify-center">
+        <div className="">
+          {loading && data.length <= 0 ? (
+            <p>loading...</p>
+          ) : (
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
+              {data?.slice(0, 2).map((item) => (
+                <ProjectsC
+                  key={item.id}
+                  title={item.title}
+                  image={item.image}
+                  sub={item.sub}
+                />
+              ))}
             </div>
-            <div className="pl-3 pt-3 dark:text-zinc-300">
-              <h1 className="text-xl font-semibold">Resume</h1>
-              <p className="text-zinc-500 dark:text-zinc-300">
-                Web development
-              </p>
-            </div>
-          </div>
-          <div className="w-[300px] group h-[290px] rounded-xl bg-white dark:bg-black dark:border-neutral-800 border overflow-hidden cursor-pointer">
-            <div className="h-[70%] rounded-xl relative">
-              <Image
-                src="https://i.ibb.co/F3XYkx6/0e8b3f11ed875882a688bcf581f22842.jpg"
-                className="object-cover h-[98%] group-hover:rounded-xl rounded-xl group-hover:scale-105 transition-all duration-300 ease-in-out absolute dark:bg-black dark:opacity-70 inset-0 group-hover:bg-black "
-                width={500}
-                height={100}
-                loading="lazy"
-                alt="feature image"
-              />
-              <div className="absolute inset-0 rounded-xl group-hover:bg-black duration-300 ease-in-out transition-all opacity-40"></div>
-            </div>
-            <div className="pl-3 pt-3 dark:text-zinc-300">
-              <h1 className="text-xl font-semibold">Resume</h1>
-              <p className="text-zinc-500 dark:text-zinc-300">
-                Web development
-              </p>
-            </div>
-          </div>
-          <div className="w-[300px] group h-[290px] rounded-xl bg-white dark:bg-black dark:border-neutral-800 border overflow-hidden cursor-pointer">
-            <div className="h-[70%] rounded-xl relative">
-              <Image
-                src="https://i.ibb.co/F3XYkx6/0e8b3f11ed875882a688bcf581f22842.jpg"
-                className="object-cover h-[98%] group-hover:rounded-xl rounded-xl group-hover:scale-105 transition-all duration-300 ease-in-out absolute dark:bg-black dark:opacity-70 inset-0 group-hover:bg-black "
-                width={500}
-                height={100}
-                loading="lazy"
-                alt="feature image"
-              />
-              <div className="absolute inset-0 rounded-xl group-hover:bg-black duration-300 ease-in-out transition-all opacity-40"></div>
-            </div>
-            <div className="pl-3 pt-3 dark:text-zinc-300">
-              <h1 className="text-xl font-semibold">Resume</h1>
-              <p className="text-zinc-500 dark:text-zinc-300">
-                Web development
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

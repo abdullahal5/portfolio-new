@@ -1,8 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
-import Head from "next/head";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -25,25 +23,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.className} lg:w-[1100px] md:w-[1100px] mx-auto dark:bg-black bg-gray-50`}
       >
-        <Head>
-          <link
-            rel="icon"
-            href="/1bffa484777281.5d6786a598010-removebg-preview.png"
-            sizes="any"
-          />
-          <link
-            rel="icon"
-            href="/icon?<generated>"
-            type="image/<generated>"
-            sizes="<generated>"
-          />
-          <link
-            rel="apple-touch-icon"
-            href="/apple-icon?<generated>"
-            type="image/<generated>"
-            sizes="<generated>"
-          />
-        </Head>
         <NextTopLoader
           color="#9C27B0"
           initialPosition={0.08}
@@ -60,7 +39,6 @@ export default function RootLayout({ children }) {
           showAtBottom={false}
         />
         {children}
-        <Footer />
       </body>
     </html>
   );

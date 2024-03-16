@@ -27,10 +27,10 @@ const Navbar = () => {
       path: "/projects",
       name: "Projects",
     },
-    {
-      path: "/achievements",
-      name: "Achievements",
-    },
+    // {
+    //   path: "/achievements",
+    //   name: "Achievements",
+    // },
   ];
 
   useEffect(() => {
@@ -131,21 +131,6 @@ const Navbar = () => {
             <TfiLayoutGrid2 className="hover:text-violet-500 h-[20px] w-[20px]" />
             {pathname === "/projects" ? (
               <p className="text-sm uppercase">Project</p>
-            ) : (
-              ""
-            )}
-          </Link>
-          <Link
-            href={"/achievements"}
-            className={`${
-              pathname === "/achievements"
-                ? "text-violet-500 flex flex-col justify-center items-center"
-                : ""
-            }`}
-          >
-            <IoMdTrophy className="hover:text-violet-500 h-[20px] w-[20px]" />
-            {pathname === "/achievements" ? (
-              <p className="text-sm uppercase">Achieve</p>
             ) : (
               ""
             )}

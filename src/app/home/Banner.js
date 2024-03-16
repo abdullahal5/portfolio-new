@@ -19,20 +19,7 @@ const font = Roboto_Mono({
 });
 
 const Banner = () => {
-  const [clicked, setClicked] = useState(false);
   const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&to=abdullahalfahin183@gmail.com&su=Subject&body=Body`;
-
-  const handleDownload = () => {
-    setClicked(true);
-    const pdf = document.createElement("a");
-    pdf.href =
-      "https://drive.google.com/uc?export=download&id=1uNWa3KSMHK-jc2AGnZxg0hw1W9iBXXSx";
-    pdf.download = "resume.pdf";
-    document.body.appendChild(pdf);
-    pdf.click();
-    document.body.removeChild(pdf);
-    setClicked(false);
-  };
 
   return (
     <>
@@ -64,25 +51,25 @@ const Banner = () => {
             </span>
           </div>
           <p
-            className={`pt-5 text-lg text-zinc-700 tracking-widest ${font.className} dark:text-zinc-300`}
+            className={`pt-5 text-md text-zinc-700 tracking-wide ${font.className} dark:text-zinc-300`}
           >
-            I&apos;m a software developer based in Bangladesh, <br />
-            specializing in cutting-edge web and mobile <br /> technologies as
-            well as pixel-perfect designs.
+            Skilled MERN Stack developer passionate about crafting seamless user
+            experiences and scalable solutions. Committed to continuous learning
+            and innovation in web development.
           </p>
           <hr className="my-5 border-violet-500" />
           <div className="flex items-center gap-3">
             <a
-              onClick={handleDownload}
-              download="resume.pdf"
+              href={"/UpdatedResume.pdf"}
+              target="_blank"
+              download="Resume.PDF"
               className="bg-violet-500 text-white py-2 px-4 rounded-xl flex gap-2 items-center cursor-pointer"
             >
-              <FaDownload />
-              {clicked ? "Downloading..." : "Resume"}
+              <FaDownload /> download
             </a>
             <a
               rel="noopener noreferrer"
-              href="https://drive.google.com/file/d/1uNWa3KSMHK-jc2AGnZxg0hw1W9iBXXSx/view?usp=drive_link"
+              href="https://drive.google.com/file/d/17xOpUF2jLW2i7XvvQv-fFflXi7Nr_3qK/view"
               target="_blank"
               className="border-violet-600 border text-violet-500 py-2 flex gap-2 items-center px-4 rounded-xl"
             >

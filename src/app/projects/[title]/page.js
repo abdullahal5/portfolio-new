@@ -8,6 +8,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { IoCodeSlashOutline } from "react-icons/io5";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/Footer";
 const ProjectDetails = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -134,6 +135,7 @@ const ProjectDetails = ({ params }) => {
             </div>
           </div>
         )}
+        <Footer/>
       </div>
     </>
   );

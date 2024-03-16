@@ -6,6 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import ProjectsC from "@/components/ProjectsC";
 import GoToTop from "@/components/GoToTop";
+import Footer from "@/components/Footer";
 
 const Projects = () => {
   const [input, setInput] = useState("");
@@ -25,12 +26,9 @@ const Projects = () => {
     setLoading(false);
   }, []);
 
-  console.log(input);
-
   const matchedProject = data?.filter((item) =>
-    (item?.title)?.toLowerCase()?.includes(input?.toLowerCase())
+    item?.title?.toLowerCase()?.includes(input?.toLowerCase())
   );
-
 
   return (
     <div>
@@ -89,6 +87,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

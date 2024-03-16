@@ -17,6 +17,8 @@ import { useState } from "react";
 import { FaChevronUp } from "react-icons/fa";
 import GoToTop from "@/components/GoToTop";
 import { BsDiscord } from "react-icons/bs";
+import Footer from "@/components/Footer";
+import { BsStars } from "react-icons/bs";
 
 const About = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -321,28 +323,27 @@ const About = () => {
           <p className="text-3xl font-semibold text-violet-500">Hello!!</p>
           <p className="text-zinc-600 py-4 dark:text-zinc-300">
             I&apos;m Fahim from Narayanganj, Dhaka, Bangladesh.I develop website
-            with MongoDB, Express, React, NodeJS.Self-driven, focused, and
-            dedicated Software Developer with 2+ years of experience, including
-            1+ years of industrial experience. I am passionate about
-            programming, developing new products, and exploring new
-            technologies. Well-versed in modern web technologies and version
-            control systems. Slow-paced learner, a good team player, and
-            committed to achieving the goal. Determined to deliver quality with
-            an emphasis on excellence.
+            with MongoDB, Express, React, NodeJS. Self-driven, focused with 8
+            months of experience. I am passionate about programming, developing
+            new products, and exploring new technologies. Well-versed in modern
+            web technologies and version control systems. Slow-paced learner, a
+            good team player, and committed to achieving the goal. Determined to
+            deliver quality with an emphasis on excellence.
           </p>
           <h1 className="tracking-wide text-3xl font-semibold text-zinc-600 flex items-center gap-3 pt-10 dark:text-zinc-300">
             <SiSololearn /> LEARNING
           </h1>
           <p className="text-zinc-600 py-4 dark:text-zinc-300">
-            On July 1, 2021, I started to learn Web Development. The course was
-            offered by Programming Hero. It was a beginner-level course that
-            started from zero to a junior-level standard. Within five months, I
-            completed the course successfully and learned the basics of MERN
-            Stack. I finished a few projects with this tech stack. Besides this,
-            to the extent of this course, I completed a long-term (7 weeks) team
-            project, where I learned and familiarized the office culture and
-            working process. That&apos;s how my web development learning
-            started. Still, I&apos;m learning and exploring web development.
+            Starting in July 2021, my journey into web development commenced
+            with Programming Hero&apos;s beginner-level course. Over five
+            months, I immersed myself in learning the intricacies of the MERN
+            Stack, completing numerous projects along the way. A pivotal
+            experience came in the form of a seven-week team project, where I
+            not only expanded my technical skills but also gained insight into
+            professional office dynamics and collaborative workflows. Although
+            I&apos;ve completed the initial course, my thirst for knowledge in
+            web development remains unquenched, driving me to continuously
+            explore and learn more in this dynamic field.
           </p>
           <h1 className="tracking-wide text-3xl font-semibold text-zinc-600 flex items-center gap-3 pt-10 dark:text-zinc-300 ">
             <FaCode /> SKILLS
@@ -358,7 +359,7 @@ const About = () => {
           </p>
 
           <h1 className="tracking-wide text-3xl font-semibold text-zinc-600 items-center pt-10 flex gap-3 dark:text-zinc-300">
-            <FaGraduationCap className="inline" />
+            <BsStars className="inline" />
             EXPERIENCE
           </h1>
           <div className="py-3 flex gap-3 items-start text-zinc-600">
@@ -444,13 +445,16 @@ const About = () => {
             Love To Do
           </h1>
           <p className="text-zinc-600 dark:text-zinc-300 py-5">
-            I love programming, developing new products, and exploring new
-            technologies. I play video games in my spare time. Sometimes I watch
-            movies. Also, love to go somewhere with family or friends on
-            vacation.
+            I find immense joy in programming and the creative process of
+            developing new products, always eager to explore the latest
+            technologies. In my downtime, I indulge in playing video games and
+            occasionally unwind with a movie. However, I equally cherish moments
+            spent with family and friends, often embarking on vacations together
+            to create lasting memories.
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

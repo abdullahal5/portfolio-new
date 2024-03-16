@@ -4,6 +4,7 @@ import FeaturedProject from "./FeaturedProject";
 import WhatIDo from "./WhatIDo";
 import Contact from "./Contact";
 import GoToTop from "@/components/GoToTop";
+import Footer from "@/components/Footer";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <FeaturedProject />
       <WhatIDo />
       <Contact />
+      <Footer/>
     </div>
   );
 };

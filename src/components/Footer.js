@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BsDiscord } from "react-icons/bs";
 import { FaFacebook, FaGithubAlt, FaLinkedinIn } from "react-icons/fa";
@@ -10,11 +11,19 @@ const Footer = () => {
       <hr className="my-10 dark:border-neutral-600" />
       <div className="flex lg:flex-row md:flex-row flex-col lg:items-start md:items-start items-center justify-around gap-5 text-zinc-600">
         <div className="w-[300px] dark:text-zinc-300 lg:text-start md:text-start text-center">
-          <h2 className="text-2xl font-semibold pb-1">PORTFOLIO</h2>
-          <p>
-            I&apos;m a software developer based in Bangladesh, specializing in
-            cutting-edge web and mobile technologies as well as pixel-perfect
-            designs.
+          <div className="lg:w-auto md:w-auto w-full">
+            <Image
+              src="https://i.ibb.co/5T1r5B6/1bffa484777281-5d6786a598010-removebg-preview.png"
+              width={60}
+              height={60}
+              className="lg:m-0 md:m-0 mx-auto"
+              alt="logo"
+            />
+          </div>
+          <p className="text-md">
+            Skilled MERN Stack developer passionate about crafting seamless user
+            experiences and scalable solutions. Committed to continuous learning
+            and innovation in web development.
           </p>
         </div>
         <div className="dark:text-zinc-300">
@@ -38,19 +47,23 @@ const Footer = () => {
             >
               Projects
             </Link>
-            <Link
+            {/* <Link
               className="hover:text-violet-500 hover:underline border-violet-500"
               href="/achievements"
             >
               Achievements
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div className="dark:text-zinc-300 text-center">
           <p className="text-3xl pb-5 font-semibold">Important Links</p>
-          <span className="border p-2 rounded-lg border-violet-500 text-violet-500 cursor-pointer">
+          <a
+            href="https://drive.google.com/file/d/17xOpUF2jLW2i7XvvQv-fFflXi7Nr_3qK/view"
+            target="_blank"
+            className="border p-2 rounded-lg border-violet-500 text-violet-500 cursor-pointer"
+          >
             Resume
-          </span>
+          </a>
           <div className="text-zinc-600 flex items-center gap-6 pt-7 dark:text-zinc-500">
             <a target="_blank" rel="noopener noreferrer" href={mailtoLink}>
               <MdOutlineMailOutline

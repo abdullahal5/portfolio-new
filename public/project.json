@@ -2,24 +2,58 @@
   {
     "id": 1,
     "title": "EchoScript",
-    "coverImage": "https://i.ibb.co/grxPCsT/Screenshot-2023-11-26-112047.png",
-    "image": "https://i.ibb.co/Cw9JSqV/download-2.jpg",
-    "sub": "Web Development",
-    "technologies": ["React", "Javscript", "MongoDB", "ExpressJS", "NodeJS"],
-    "features": [
-      "Users can explore electronic goods in the shop and make an orde",
-      "Users need to sign up to make an order and be able to see the user dashboard",
-      "Admin can manage orders, add or remove products, and make another admin"
+    "coverImage": "https://i.ibb.co/bWqBRQg/martin-adams-V75-YEq-Jp4p-E-unsplash.jpg",
+    "image": "https://i.ibb.co/MpmvCc0/Screenshot-209.png",
+    "sub": "Team Project",
+    "technologies": [
+      "Next JS",
+      "Javscript",
+      "MongoDB",
+      "ExpressJS",
+      "NodeJS",
+      "Mongoose",
+      "Tailwind CSS",
+      "Firebase"
     ],
-    "tag": ["E-commerce", "Full Stack", "Team"],
-    "githubLink": "https://github.com/abdullahal5",
-    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+    "features": [
+      "Writers can create and customize their own articles. Collaborate with team members on shared articles.",
+      "Explore a diverse range of articles from various writers. Engage with content through comments, likes, and bookmarks.",
+      "Engage with the community by leaving comments on articles, expressing your appreciation with likes, and bookmarking posts to read later."
+    ],
+    "tag": ["Article Writing", "Full Stack", "Team"],
+    "githubLink": "https://github.com/arefin22/EchoScript",
+    "LiveLink": "https://echoscript-front.vercel.app/"
   },
   {
     "id": 2,
-    "title": "NextJs",
-    "coverImage": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
-    "image": "https://i.ibb.co/nb7YkKK/book-with-tree-digital-art-style-education-day-23-2151164288.jpg",
+    "title": "CarProject",
+    "coverImage": "https://i.ibb.co/XJcPT1n/Screenshot-214.png",
+    "image": "https://i.ibb.co/L1NY6sm/Screenshot-212.png",
+    "sub": "Car Buying and selling",
+    "technologies": [
+      "React",
+      "Javscript",
+      "MongoDB",
+      "ExpressJS",
+      "NodeJS",
+      "Tailwind CSS",
+      "Firebase"
+    ],
+    "features": [
+      "User can explore all the cars and authentication system",
+      "Car categories like in the toyota card user can see only toyota cars",
+      "update and delete a car",
+      "Add to cart"
+    ],
+    "tag": ["Car", "Full Stack"],
+    "githubLink": "https://github.com/abdullahal5/assignment10",
+    "LiveLink": "https://waggish-oven.surge.sh/"
+  },
+  {
+    "id": 3,
+    "title": "JobSearch",
+    "coverImage": "https://i.ibb.co/qmyK5qx/Screenshot-215.png",
+    "image": "https://i.ibb.co/r4q01rr/Screenshot-217.png",
     "sub": "Web Development",
     "technologies": [
       "React",
@@ -27,55 +61,40 @@
       "MongoDB",
       "ExpressJS",
       "NodeJS",
-      "HTML",
-      "CSS",
       "Tailwind CSS",
-      "Bootstrap",
-      "NextJS",
-      "TypeScript",
-      "Redux",
-      "Mongoose",
-      "Socket io"
+      "Firebase"
     ],
     "features": [
-      "Users can explore electronic goods in the shop and make an orde",
-      "Users need to sign up to make an order and be able to see the user dashboard",
-      "Admin can manage orders, add or remove products, and make another admin"
+      "Company can share their job offers . Also can Delete and update the job info",
+      "User can apply for the job and author can get a email",
+      "Category wise jobs and Filtering, searching system also Authentican system with google and admin dashboard"
     ],
     "tag": ["E-commerce", "Full Stack", "Team"],
-    "githubLink": "https://github.com/abdullahal5",
-    "LiveLink": "https://porfolio-teal-omega.vercel.app"
-  },
-  {
-    "id": 3,
-    "title": "ecommerce",
-    "coverImage": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
-    "image": "https://i.ibb.co/fQDdkVj/view-illuminated-neon-gaming-keyboard-setup-controller-23-2149529367.jpg",
-    "sub": "Web Development",
-    "technologies": ["React", "Javscript", "MongoDB", "ExpressJS", "NodeJS"],
-    "features": [
-      "Users can explore electronic goods in the shop and make an orde",
-      "Users need to sign up to make an order and be able to see the user dashboard",
-      "Admin can manage orders, add or remove products, and make another admin"
-    ],
-    "tag": ["E-commerce", "Full Stack", "Team"],
-    "githubLink": "https://github.com/abdullahal5",
-    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+    "githubLink": "https://github.com/abdullahal5/assignment12",
+    "LiveLink": "https://careercanvas.surge.sh/"
   },
   {
     "id": 4,
-    "title": "article",
-    "coverImage": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
-    "image": "https://i.ibb.co/nbd75nw/download-3-removebg-preview.png",
-    "sub": "Web Development",
-    "technologies": ["React", "Javscript", "MongoDB", "ExpressJS", "NodeJS"],
-    "features": [
-      "Users can explore electronic goods in the shop and make an orde",
-      "Users need to sign up to make an order and be able to see the user dashboard",
-      "Admin can manage orders, add or remove products, and make another admin"
+    "title": "HostelMeal",
+    "coverImage": "https://i.ibb.co/9sMDgh9/Screenshot-218.png",
+    "image": "https://i.ibb.co/Sm1RryW/Screenshot-218-1.png",
+    "sub": "Food management",
+    "technologies": [
+      "React",
+      "Javscript",
+      "MongoDB",
+      "ExpressJS",
+      "NodeJS",
+      "Firebase",
+      "Tailwind CSS"
     ],
-    "tag": ["E-commerce", "Full Stack", "Team"],
-    "githubLink": "https://github.com/abdullahal5",
-    "LiveLink": "https://porfolio-teal-omega.vercel.app"
+    "features": [
+      "Users can explore all the meal and request for that meal",
+      "User can buy package",
+      "Category wise all meals with filter by price"
+    ],
+    "tag": ["Food", "Full Stack"],
+    "githubLink": "https://github.com/abdullahal5/private-to-public",
+    "LiveLink": "https://fahiml-committee.surge.sh/"
   }
 ]
