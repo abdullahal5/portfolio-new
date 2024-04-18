@@ -127,7 +127,7 @@ const Banner = () => {
           </div>
         </div>
         <Image
-          src="https://i.ibb.co/68LC2r3/hero-img.webp"
+          src="https://i.ibb.co/NxktZt5/fahim.png"
           width={500}
           height={500}
           loading="lazy"

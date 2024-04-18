@@ -33,7 +33,7 @@ const About = () => {
       <div className="lg:pt-36 md:pt-36 pt-5 flex lg:flex-row md:flex-row flex-col gap-5 mx-5">
         <div className="w-80 lg:block md:block hidden border rounded-xl text-center max-h-[730px] dark:border-neutral-800">
           <Image
-            src="https://i.ibb.co/68LC2r3/hero-img.webp"
+            src="https://i.ibb.co/NxktZt5/fahim.png"
             width={400}
             height={400}
             loading="lazy"
@@ -178,7 +178,7 @@ const About = () => {
             <div className="flex items-center text-center py-3">
               <div className="w-[35%]">
                 <Image
-                  src="https://i.ibb.co/68LC2r3/hero-img.webp"
+                  src="https://i.ibb.co/NxktZt5/fahim.png"
                   width={150}
                   height={150}
                   loading="lazy"
@@ -349,13 +349,13 @@ const About = () => {
             <FaCode /> SKILLS
           </h1>
           <p className="text-zinc-600 py-4 dark:text-zinc-300">
-            I&apos;m skilled in HTML5, CSS3, Bootstrap, JavaScript, ES6, React
-            JS, React Router, Node JS, Express JS, MongoDB, and Firebase
-            Authentication. I&apos;m also familiar with JWT, React Native,
-            Redux, Stripe, Tailwind CSS, and Material UI. Besides these,
-            I&apos;m used to a few tools, like - Git, VS Code, Figma, Jira,
-            Vercel, Heroku, Netlify, and Chrome Dev Tool. Currently, I&apos;m
-            working on Vue JS, Nuxt JS, Next JS, and necessary packages.
+            I&apos;m skilled in HTML5, CSS3, JavaScript, ES6,
+            ReactJS, React Router, Node JS, Express JS, MongoDB, and Firebase
+            Authentication. I&apos;m also familiar with JWT, Stripe, Tailwind
+            CSS, and Material UI. Besides these, I&apos;m used to a few tools,
+            like - Git, VS Code, Figma, Trello, Vercel, Surge and
+            Chrome Dev Tool. Currently, I&apos;m working on Redux-toolkit and
+            Typescript, and necessary packages.
           </p>
 
           <h1 className="tracking-wide text-3xl font-semibold text-zinc-600 items-center pt-10 flex gap-3 dark:text-zinc-300">
