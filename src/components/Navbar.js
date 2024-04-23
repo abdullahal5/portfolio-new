@@ -61,6 +61,18 @@ const Navbar = () => {
       <nav className="fixed z-50 backdrop-blur-md backdrop:filter bg-zinc-50 dark:bg-neutral-900 dark:bg-transparent dark:bg-opacity-80 bg-opacity-60 lg:w-[1100px] md:w-[1100px] border-2 bg-transparent py-4 rounded-r-full border-gray-200 rounded-l-full mt-10 mx-auto w-full lg:block md:block hidden dark:border-violet-500/10 dark:backdrop-filter dark:border-2">
         <div className="gap-7 text-[.875rem] font-semibold text-zinc-600 uppercase">
           <div className="flex justify-between px-10 items-center">
+            <div className="lg:w-auto md:w-auto w-full">
+              <Link href="/">
+                <Image
+                  src="https://i.ibb.co/5T1r5B6/1bffa484777281-5d6786a598010-removebg-preview.png"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  className="lg:m-0 md:m-0 mx-auto"
+                  alt="logo"
+                />
+              </Link>
+            </div>
             <div className="flex items-center justify-between gap-10 tracking-wider">
               {routes.map((item) => (
                 <Link
