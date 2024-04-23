@@ -9,7 +9,6 @@ import { FaGithubAlt } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { BsDiscord } from "react-icons/bs";
-import { useState } from "react";
 
 const font = Roboto_Mono({
   weight: "700",
@@ -60,7 +59,7 @@ const Banner = () => {
           <hr className="my-5 border-violet-500" />
           <div className="flex items-center gap-3">
             <a
-              href={"/UpdatedResume.pdf"}
+              href={"/Resume of Abdullah Al Fahim (1).pdf"}
               target="_blank"
               download="Resume.PDF"
               className="bg-violet-500 text-white py-2 px-4 rounded-xl flex gap-2 items-center cursor-pointer"
@@ -69,7 +68,7 @@ const Banner = () => {
             </a>
             <a
               rel="noopener noreferrer"
-              href="https://drive.google.com/file/d/17xOpUF2jLW2i7XvvQv-fFflXi7Nr_3qK/view"
+              href="https://drive.google.com/file/d/1aIF-lOjG84ggXP7og2U9DCowHzYYRJMp/view"
               target="_blank"
               className="border-violet-600 border text-violet-500 py-2 flex gap-2 items-center px-4 rounded-xl"
             >

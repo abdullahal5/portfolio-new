@@ -58,7 +58,7 @@ const Footer = () => {
         <div className="dark:text-zinc-300 text-center">
           <p className="text-3xl pb-5 font-semibold">Important Links</p>
           <a
-            href="https://drive.google.com/file/d/17xOpUF2jLW2i7XvvQv-fFflXi7Nr_3qK/view"
+            href="https://drive.google.com/file/d/1aIF-lOjG84ggXP7og2U9DCowHzYYRJMp/view"
             target="_blank"
             className="border p-2 rounded-lg border-violet-500 text-violet-500 cursor-pointer"
           >
