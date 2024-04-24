@@ -69,12 +69,12 @@ const Projects = () => {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="">
+          <div>
             {loading && data.length <= 0 ? (
               <p>loading...</p>
-            ) : (
+            ) : matchedProject.length > 0 ? (
               <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
-                {matchedProject?.map((item) => (
+                {matchedProject.map((item) => (
                   <ProjectsC
                     key={item.id}
                     title={item.title}
@@ -83,6 +83,10 @@ const Projects = () => {
                   />
                 ))}
               </div>
+            ) : (
+              <p className="text-4xl font-bold text-center h-[50vh] flex items-center justify-center text-zinc-600 dark:text-zinc-300">
+                No projects found matching <br /> `{input}`.
+              </p>
             )}
           </div>
         </div>
