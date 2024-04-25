@@ -114,7 +114,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className="my-10 dark:border-neutral-600" />
+      <hr className="my-5 dark:border-neutral-600" />
       <p className="text-center text-zinc-500 pb-5">
         ALL RIGHTS RESERVED @2024 BY FAHIM
       </p>

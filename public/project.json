@@ -26,6 +26,33 @@
   },
   {
     "id": 2,
+    "title": "MyStock",
+    "coverImage": "https://i.ibb.co/hm46hMR/Screenshot-238.png",
+    "image": "https://i.ibb.co/0h5tKzb/Screenshot-237.png",
+    "sub": "Food management",
+    "technologies": [
+      "React",
+      "Javscript",
+      "MongoDB",
+      "ExpressJS",
+      "NodeJS",
+      "Firebase",
+      "Tailwind CSS",
+      "Redux-toolkit",
+      "Recharts",
+      "React-Router-Dom"
+    ],
+    "features": [
+      "Users can explore all the meal and request for that meal",
+      "User can buy package",
+      "Category wise all meals with filter by price"
+    ],
+    "tag": ["Inventory Management", "Full Stack"],
+    "githubLink": "https://github.com/abdullahal5/Inventory-management",
+    "LiveLink": "https://inventory-management-client-wheat.vercel.app/"
+  },
+  {
+    "id": 3,
     "title": "CarProject",
     "coverImage": "https://i.ibb.co/XJcPT1n/Screenshot-214.png",
     "image": "https://i.ibb.co/L1NY6sm/Screenshot-212.png",
@@ -50,7 +77,7 @@
     "LiveLink": "https://waggish-oven.surge.sh/"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "JobSearch",
     "coverImage": "https://i.ibb.co/qmyK5qx/Screenshot-215.png",
     "image": "https://i.ibb.co/r4q01rr/Screenshot-217.png",
@@ -74,7 +101,7 @@
     "LiveLink": "https://careercanvas.surge.sh/"
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "HostelMeal",
     "coverImage": "https://i.ibb.co/9sMDgh9/Screenshot-218.png",
     "image": "https://i.ibb.co/Sm1RryW/Screenshot-218-1.png",
