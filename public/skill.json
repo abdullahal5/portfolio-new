@@ -61,5 +61,19 @@
     "tag": "ReactJS Framework",
     "image": "https://i.ibb.co/2NMcPVZ/download-2-1.png",
     "progress": "70"
+  },
+  {
+    "id": 10,
+    "name": "TypeScript",
+    "tag": "Language",
+    "image": "https://i.ibb.co/QbLQch3/typescript-2.png",
+    "progress": "20"
+  },
+  {
+    "id": 11,
+    "name": "Redux-toolkit",
+    "tag": "State Management",
+    "image": "https://i.ibb.co/mGSJmVp/redux-2.png",
+    "progress": "20"
   }
 ]

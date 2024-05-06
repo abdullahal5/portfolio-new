@@ -24,7 +24,7 @@ const SkillCard = ({ item }) => {
           ) : (
             <Image
               src={item.image}
-              className="w-20 rounded-full group-hover:scale-110 duration-300 transition-all ease-in-out"
+              className="w-20 rounded-[50%] group-hover:scale-110 duration-300 transition-all ease-in-out mx-auto "
               width={150}
               height={100}
               loading="lazy"
