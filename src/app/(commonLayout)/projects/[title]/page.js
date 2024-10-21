@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/home/Navbar";
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
@@ -8,7 +8,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { IoCodeSlashOutline } from "react-icons/io5";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import Footer from "@/components/Footer";
+import Footer from "@/components/home/Footer";
 const ProjectDetails = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);

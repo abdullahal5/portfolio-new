@@ -1,6 +1,6 @@
 "use client";
-import SectionTitle from "@/components/SectionTitle";
-import SkillCard from "@/components/SkillCard";
+import SectionTitle from "@/components/home/SectionTitle";
+import SkillCard from "@/components/home/SkillCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

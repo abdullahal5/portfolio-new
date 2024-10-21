@@ -11,7 +11,7 @@ const roboto = Roboto({
 
 export const metadata = {
   title: "Fahim-Portfolio",
-  description: "A Frontend Developer Portfolio",
+  description: "A Full Stack Developer Portfolio",
 };
 
 export default function RootLayout({ children }) {
@@ -20,9 +20,7 @@ export default function RootLayout({ children }) {
       className="!scroll-smooth lg:scrollbar-thin md:scrollbar-thin lg:scrollbar-thumb-violet-500 md:scrollbar-thumb-violet-500 lg:scrollbar-track-zinc-400 md:scrollbar-track-zinc-400 overflow-y-scroll"
       lang="en"
     >
-      <body
-        className={`${roboto.className} lg:w-[1100px] md:w-[1100px] mx-auto dark:bg-black bg-gray-50`}
-      >
+      <body className={`${roboto.className} mx-auto dark:bg-black bg-gray-50`}>
         <NextTopLoader
           color="#9C27B0"
           initialPosition={0.08}

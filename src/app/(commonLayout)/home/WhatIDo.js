@@ -1,4 +1,4 @@
-import SectionTitle from "@/components/SectionTitle";
+import SectionTitle from "@/components/home/SectionTitle";
 import { BiMobileVibration } from "react-icons/bi";
 import { FaBug } from "react-icons/fa";
 import { MdOutlineFeaturedPlayList } from "react-icons/md";

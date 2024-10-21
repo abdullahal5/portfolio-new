@@ -1,12 +1,12 @@
 "use client";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/home/Navbar";
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
-import ProjectsC from "@/components/ProjectsC";
-import GoToTop from "@/components/GoToTop";
-import Footer from "@/components/Footer";
+import ProjectsC from "@/components/home/ProjectsC";
+import GoToTop from "@/components/home/GoToTop";
+import Footer from "@/components/home/Footer";
 
 const Projects = () => {
   const [input, setInput] = useState("");

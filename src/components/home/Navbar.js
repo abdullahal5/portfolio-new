@@ -47,9 +47,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const getItem = localStorage?.getItem("theme");
-
-    if (getItem === "light") {
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");

@@ -1,5 +1,5 @@
 "use client";
-import SectionTitle from "@/components/SectionTitle";
+import SectionTitle from "@/components/home/SectionTitle";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";

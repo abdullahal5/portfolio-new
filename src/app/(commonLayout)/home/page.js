@@ -1,10 +1,10 @@
-import Banner from "@/app/home/Banner";
+import Banner from "@/app/(commonLayout)/home/Banner";
 import Skills from "./Skills";
 import FeaturedProject from "./FeaturedProject";
 import WhatIDo from "./WhatIDo";
 import Contact from "./Contact";
-import GoToTop from "@/components/GoToTop";
-import Footer from "@/components/Footer";
+import GoToTop from "@/components/home/GoToTop";
+import Footer from "@/components/home/Footer";
 
 const HomePage = () => {
   return (

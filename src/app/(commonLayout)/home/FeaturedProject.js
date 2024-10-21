@@ -1,6 +1,6 @@
 "use client";
-import ProjectsC from "@/components/ProjectsC";
-import SectionTitle from "@/components/SectionTitle";
+import ProjectsC from "@/components/home/ProjectsC";
+import SectionTitle from "@/components/home/SectionTitle";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

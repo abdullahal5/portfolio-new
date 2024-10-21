@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/home/Navbar";
 import Image from "next/image";
 import { CiMail, CiLocationOn } from "react-icons/ci";
 import { FaFacebook, FaGithubAlt, FaLinkedinIn } from "react-icons/fa";
@@ -15,9 +15,9 @@ import { IoMdHeart } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa6";
 import { useState } from "react";
 import { FaChevronUp } from "react-icons/fa";
-import GoToTop from "@/components/GoToTop";
+import GoToTop from "@/components/home/GoToTop";
 import { BsDiscord } from "react-icons/bs";
-import Footer from "@/components/Footer";
+import Footer from "@/components/home/Footer";
 import { BsStars } from "react-icons/bs";
 
 const About = () => {
