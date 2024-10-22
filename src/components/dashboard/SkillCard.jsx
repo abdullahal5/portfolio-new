@@ -1,104 +1,39 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
-import SkillLevel from "@/components/home/SkillLevel";
-import { BiEdit, BiPlusCircle } from "react-icons/bi";
+import SkillLevel from "../home/SkillLevel";
+import Image from "next/image";
+import { BiEdit } from "react-icons/bi";
 import { BsTrash2 } from "react-icons/bs";
-import Modal from "@/components/dashboard/Modal";
-import SkillCard from "@/components/dashboard/SkillCard";
+import { useEffect, useState } from "react";
+import Modal from "./Modal";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
 
-const EnhancedSkillsTable = ({ loading = false }) => {
-  const [skills, setSkills] = useState([
-    {
-      id: 1,
-      name: "HTML",
-      tag: "Markup language",
-      image: "https://i.ibb.co/ZdmDsZh/html-removebg-preview.png",
-      progress: "95",
-    },
-    {
-      id: 2,
-      name: "CSS3",
-      tag: "Style Sheet",
-      image: "https://i.ibb.co/bH10Fbj/css-removebg-preview.png",
-      progress: "70",
-    },
-    {
-      id: 3,
-      name: "Tailwind CSS",
-      tag: "CSS Framework",
-      image: "https://i.ibb.co/h8fhTXL/tailwind-removebg-preview.png",
-      progress: "80",
-    },
-    {
-      id: 4,
-      name: "JavaScript (ES6)",
-      image: "https://i.ibb.co/GM24BcF/javascript-removebg-preview.png",
-      tag: "Language",
-      progress: "60",
-    },
-    {
-      id: 5,
-      name: "React JS",
-      tag: "JavaScript Library",
-      image: "https://i.ibb.co/jykK1H3/download-1-removebg-preview.png",
-      progress: "70",
-    },
-    {
-      id: 6,
-      name: "MongoDB + Mongoose",
-      tag: "No SQL Database",
-      image: "https://i.ibb.co/hsq9JZ3/mongodb-removebg-preview.png",
-      progress: "60",
-    },
-    {
-      id: 7,
-      name: "NodeJS",
-      tag: "JavaScript runtime",
-      image: "https://i.ibb.co/FKtDz2q/nodejs-removebg-preview.png",
-      progress: "60",
-    },
-    {
-      id: 8,
-      name: "ExpressJS",
-      tag: "NodeJS Framework",
-      image: "https://i.ibb.co/98zkBdN/download-1-removebg-preview.png",
-      progress: "70",
-    },
-    {
-      id: 9,
-      name: "NextJS",
-      tag: "ReactJS Framework",
-      image: "https://i.ibb.co/2NMcPVZ/download-2-1.png",
-      progress: "70",
-    },
-    {
-      id: 10,
-      name: "TypeScript",
-      tag: "Language",
-      image: "https://i.ibb.co/QbLQch3/typescript-2.png",
-      progress: "20",
-    },
-    {
-      id: 11,
-      name: "Redux-toolkit",
-      tag: "State Management",
-      image: "https://i.ibb.co/mGSJmVp/redux-2.png",
-      progress: "20",
-    },
-  ]);
+const SkillCard = ({ item, loading = false }) => {
   const [isSkillAddModalOpen, setIsSkillAddModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(item.image || "");
   const [imagePreview, setImagePreview] = useState("");
   const [progress, setProgress] = useState("");
 
+  const handleEditSkill = (skill) => {
+    setIsSkillAddModalOpen(true);
+    setName(skill.name);
+    setTag(skill.tag);
+    setImage(skill.image);
+    setProgress(skill.progress);
+  };
+
+  useEffect(() => {
+    setImage(item.image);
+  }, [item]);
+
+  const handleDeleteSkill = (id) => {
+    console.log("Delete skill clicked for id:", id);
+  };
+
   const toggleModal = () => {
-    if (isSkillAddModalOpen === false) {
+    if (!isSkillAddModalOpen) {
       setName("");
       setTag("");
       setImage("");
@@ -111,11 +46,10 @@ const EnhancedSkillsTable = ({ loading = false }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const toastId = toast.loading("Adding a skill...");
-
     let uploadedImageUrl = image;
 
     if (uploadedImageUrl) {
+      console.log("ok");
       const formData = new FormData();
       formData.append("image", image);
 
@@ -124,24 +58,22 @@ const EnhancedSkillsTable = ({ loading = false }) => {
           `https://api.imgbb.com/1/upload?key=228f07b239d69be9bcc9d7f97fbf57de`,
           formData
         );
-
         uploadedImageUrl = response.data.data.url;
-
-        console.log({
-          name,
-          tag,
-          image: uploadedImageUrl,
-          progress,
-        });
-
-        toast.dismiss(toastId);
-
-        toast.success("Skill added successfully!");
+        console.log(uploadedImageUrl);
       } catch (error) {
-        toast.dismiss(toastId);
-        toast.error(`Error: ${error.message}`);
+        console.error("Error uploading image:", error);
+        return;
       }
     }
+
+    console.log({
+      name,
+      tag,
+      image: uploadedImageUrl,
+      progress,
+    });
+
+    toggleModal();
   };
 
   const handleFileChange = (e) => {
@@ -157,11 +89,10 @@ const EnhancedSkillsTable = ({ loading = false }) => {
 
   return (
     <>
-      <Toaster />
       <Modal isOpen={isSkillAddModalOpen} setIsOpen={setIsSkillAddModalOpen}>
         <div className="flex items-start justify-between p-5 border-b border-solid border-gray-200 rounded-t dark:border-gray-700">
           <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-            Add Skill
+            Update Skill
           </h3>
           <button
             className="p-1 ml-auto bg-transparent border-0 text-gray-300 float-right text-3xl leading-none font-semibold outline-none focus:outline-none hover:text-gray-500"
@@ -284,7 +215,7 @@ const EnhancedSkillsTable = ({ loading = false }) => {
                 ) : (
                   <div className="sm:w-32 sm:h-32 mt-4 sm:mt-0">
                     <Image
-                      src={image}
+                      src={item?.image}
                       alt="Default Preview"
                       width={80}
                       height={80}
@@ -299,33 +230,73 @@ const EnhancedSkillsTable = ({ loading = false }) => {
             type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Add Skill
+            Update Skill
           </button>
         </form>
       </Modal>
-
-      <div className="px-4 py-8 h-[100vh] overflow-y-auto">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">
-          Skills Overview
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
-            onClick={toggleModal}
-            className="bg-white dark:bg-[#071114] py-4 rounded-xl shadow-lg overflow-hidden flex flex-col justify-center items-center transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer"
-          >
-            <BiPlusCircle className="w-12 h-12 text-blue-600 dark:text-blue-400 mb-4" />
-            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-              Add Skills
-            </h3>
+      <div>
+        <div
+          key={item.id}
+          className="bg-white dark:bg-[#071114] rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 p-3"
+        >
+          <div className="p-2">
+            <div className="flex items-center mb-4">
+              {loading ? (
+                <Skeleton circle width={64} height={64} />
+              ) : (
+                <Image
+                  src={item.image}
+                  className="w-16 rounded-[50%]"
+                  width={150}
+                  height={100}
+                  loading="lazy"
+                  alt="image"
+                />
+              )}
+              <div className="ml-4">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  {loading ? <Skeleton width={100} /> : item.name}
+                </h3>
+                <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
+                  {loading ? <Skeleton width={60} /> : item.tag}
+                </span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center mb-4">
+              <div className="w-full">
+                <div className="flex items-center gap-2">
+                  {loading ? (
+                    <Skeleton height={8} />
+                  ) : (
+                    <SkillLevel percentage={item.progress} />
+                  )}
+                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                    {loading ? <Skeleton width={40} /> : `${item.progress}%`}
+                  </span>
+                </div>
+              </div>
+              <div className="space-x-2 flex items-center">
+                <button
+                  onClick={() => handleEditSkill(item)}
+                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition-colors duration-300"
+                >
+                  <BiEdit className="w-5 h-5" />
+                  <span className="sr-only">Edit</span>
+                </button>
+                <button
+                  onClick={() => handleDeleteSkill(item.id)}
+                  className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-200 transition-colors duration-300"
+                >
+                  <BsTrash2 className="w-5 h-5" />
+                  <span className="sr-only">Delete</span>
+                </button>
+              </div>
+            </div>
           </div>
-
-          {skills.map((item) => (
-            <SkillCard key={item.id} item={item} />
-          ))}
         </div>
       </div>
     </>
   );
 };
 
-export default EnhancedSkillsTable;
+export default SkillCard;

@@ -3,11 +3,11 @@ import { FaRocket, FaChartLine, FaBriefcase } from "react-icons/fa";
 
 const WelcomePage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-indigo-100 dark:from-black dark:to-indigo-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-indigo-100 dark:from-black dark:to-indigo-950 flex items-center justify-center p-5">
       <div className="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300">
         <div className="p-8 md:p-12">
           <h1 className="text-4xl md:text-5xl font-bold text-violet-600 dark:text-violet-400 mb-4 animate-fade-in-down">
-            Welcome to Your Dashboard
+            Welcome to Dashboard
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 animate-fade-in-up">
             Explore your portfolio, track your progress, and showcase your

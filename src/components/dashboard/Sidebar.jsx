@@ -56,7 +56,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="h-screen lg:block">
+    <aside className="h-full lg:block">
       <nav className="hidden lg:flex h-full flex-col bg-white border-r shadow-sm dark:bg-gray-900 dark:border-gray-700 transition-all duration-300">
         <div className="p-4 pb-2 flex justify-between items-center">
           <Image
