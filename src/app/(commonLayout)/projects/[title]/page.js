@@ -50,16 +50,24 @@ const ProjectDetails = ({ params }) => {
             </div>
             <div>
               <div className="relative">
-                <Image
-                  src={data?.coverImage}
-                  width={1000}
-                  className="mx-auto object-cover w-full h-96 object-center rounded-t-lg"
-                  height={100}
-                  loading="lazy"
-                  decoding="async"
-                  alt="Coverimage"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] to-[100%] via-white via-[45%] dark:from-neutral-950 opacity-80 dark:opacity-70 dark:to-[100%] dark:via-neutral-900 dark:via-[45%] dark:bg-gradient-to-t rounded-t-lg"></div>
+                <div
+                  style={{
+                    WebkitMaskImage: "linear-gradient(black, transparent)",
+                    maskImage: "linear-gradient(black, transparent)",
+                  }}
+                >
+                  <Image
+                    src={data?.coverImage}
+                    width={1000}
+                    className="mx-auto object-cover w-full h-96 object-center rounded-t-lg"
+                    height={100}
+                    loading="lazy"
+                    decoding="async"
+                    alt="Coverimage"
+                  />
+                </div>
+
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] to-[100%] via-white via-[45%] dark:from-neutral-950 opacity-80 dark:opacity-70 dark:to-[100%] dark:via-neutral-900 dark:via-[45%] dark:bg-gradient-to-t rounded-t-lg"></div> */}
                 <div className="absolute top-2/3 left-0 right-0 text-center">
                   <h2 className="text-4xl font-bold text-zinc-700 dark:text-zinc-300">
                     {data?.title}
@@ -135,7 +143,7 @@ const ProjectDetails = ({ params }) => {
             </div>
           </div>
         )}
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

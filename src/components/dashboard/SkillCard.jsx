@@ -234,64 +234,62 @@ const SkillCard = ({ item, loading = false }) => {
           </button>
         </form>
       </Modal>
-      <div>
-        <div
-          key={item.id}
-          className="bg-white dark:bg-[#071114] rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105 p-3"
-        >
-          <div className="p-2">
-            <div className="flex items-center mb-4">
-              {loading ? (
-                <Skeleton circle width={64} height={64} />
-              ) : (
-                <Image
-                  src={item.image}
-                  className="w-16 rounded-[50%]"
-                  width={150}
-                  height={100}
-                  loading="lazy"
-                  alt="image"
-                />
-              )}
-              <div className="ml-4">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                  {loading ? <Skeleton width={100} /> : item.name}
-                </h3>
-                <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
-                  {loading ? <Skeleton width={60} /> : item.tag}
+      <div
+        key={item.id}
+        className="bg-white dark:bg-[#071114] rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 p-3 group"
+      >
+        <div className="p-2">
+          <div className="flex items-center mb-4">
+            {loading ? (
+              <Skeleton circle width={64} height={64} />
+            ) : (
+              <Image
+                src={item.image}
+                className="w-16 rounded-[50%]"
+                width={150}
+                height={100}
+                loading="lazy"
+                alt="image"
+              />
+            )}
+            <div className="ml-4">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                {loading ? <Skeleton width={100} /> : item.name}
+              </h3>
+              <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
+                {loading ? <Skeleton width={60} /> : item.tag}
+              </span>
+            </div>
+          </div>
+          <div className="flex justify-between items-center mb-4">
+            <div className="w-full">
+              <div className="flex items-center gap-2">
+                {loading ? (
+                  <Skeleton height={8} />
+                ) : (
+                  <SkillLevel percentage={item.progress} />
+                )}
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  {loading ? <Skeleton width={40} /> : `${item.progress}%`}
                 </span>
               </div>
             </div>
-            <div className="flex justify-between items-center mb-4">
-              <div className="w-full">
-                <div className="flex items-center gap-2">
-                  {loading ? (
-                    <Skeleton height={8} />
-                  ) : (
-                    <SkillLevel percentage={item.progress} />
-                  )}
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {loading ? <Skeleton width={40} /> : `${item.progress}%`}
-                  </span>
-                </div>
-              </div>
-              <div className="space-x-2 flex items-center">
-                <button
-                  onClick={() => handleEditSkill(item)}
-                  className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition-colors duration-300"
-                >
-                  <BiEdit className="w-5 h-5" />
-                  <span className="sr-only">Edit</span>
-                </button>
-                <button
-                  onClick={() => handleDeleteSkill(item.id)}
-                  className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-200 transition-colors duration-300"
-                >
-                  <BsTrash2 className="w-5 h-5" />
-                  <span className="sr-only">Delete</span>
-                </button>
-              </div>
-            </div>
+            {/* <div className="gap-2 flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <button
+                onClick={() => handleEditSkill(item)}
+                className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition-colors duration-300"
+              >
+                <BiEdit className="w-5 h-5" />
+                <span className="sr-only">Edit</span>
+              </button>
+              <button
+                onClick={() => handleDeleteSkill(item.id)}
+                className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-200 transition-colors duration-300"
+              >
+                <BsTrash2 className="w-5 h-5" />
+                <span className="sr-only">Delete</span>
+              </button>
+            </div> */}
           </div>
         </div>
       </div>

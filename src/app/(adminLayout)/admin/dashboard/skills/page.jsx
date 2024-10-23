@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import SkillLevel from "@/components/home/SkillLevel";
@@ -9,93 +9,32 @@ import Modal from "@/components/dashboard/Modal";
 import SkillCard from "@/components/dashboard/SkillCard";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import ProjectCard from "@/components/dashboard/ProjectCard";
 
 const EnhancedSkillsTable = ({ loading = false }) => {
-  const [skills, setSkills] = useState([
-    {
-      id: 1,
-      name: "HTML",
-      tag: "Markup language",
-      image: "https://i.ibb.co/ZdmDsZh/html-removebg-preview.png",
-      progress: "95",
-    },
-    {
-      id: 2,
-      name: "CSS3",
-      tag: "Style Sheet",
-      image: "https://i.ibb.co/bH10Fbj/css-removebg-preview.png",
-      progress: "70",
-    },
-    {
-      id: 3,
-      name: "Tailwind CSS",
-      tag: "CSS Framework",
-      image: "https://i.ibb.co/h8fhTXL/tailwind-removebg-preview.png",
-      progress: "80",
-    },
-    {
-      id: 4,
-      name: "JavaScript (ES6)",
-      image: "https://i.ibb.co/GM24BcF/javascript-removebg-preview.png",
-      tag: "Language",
-      progress: "60",
-    },
-    {
-      id: 5,
-      name: "React JS",
-      tag: "JavaScript Library",
-      image: "https://i.ibb.co/jykK1H3/download-1-removebg-preview.png",
-      progress: "70",
-    },
-    {
-      id: 6,
-      name: "MongoDB + Mongoose",
-      tag: "No SQL Database",
-      image: "https://i.ibb.co/hsq9JZ3/mongodb-removebg-preview.png",
-      progress: "60",
-    },
-    {
-      id: 7,
-      name: "NodeJS",
-      tag: "JavaScript runtime",
-      image: "https://i.ibb.co/FKtDz2q/nodejs-removebg-preview.png",
-      progress: "60",
-    },
-    {
-      id: 8,
-      name: "ExpressJS",
-      tag: "NodeJS Framework",
-      image: "https://i.ibb.co/98zkBdN/download-1-removebg-preview.png",
-      progress: "70",
-    },
-    {
-      id: 9,
-      name: "NextJS",
-      tag: "ReactJS Framework",
-      image: "https://i.ibb.co/2NMcPVZ/download-2-1.png",
-      progress: "70",
-    },
-    {
-      id: 10,
-      name: "TypeScript",
-      tag: "Language",
-      image: "https://i.ibb.co/QbLQch3/typescript-2.png",
-      progress: "20",
-    },
-    {
-      id: 11,
-      name: "Redux-toolkit",
-      tag: "State Management",
-      image: "https://i.ibb.co/mGSJmVp/redux-2.png",
-      progress: "20",
-    },
-  ]);
+  const [skills, setSkills] = useState([]);
   const [isSkillAddModalOpen, setIsSkillAddModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
   const [image, setImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
   const [progress, setProgress] = useState("");
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await axios.get("/skill.json");
+        console.log(res.data);
+        if (res) {
+          setSkills(res.data);
+        }
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const toggleModal = () => {
     if (isSkillAddModalOpen === false) {
@@ -303,15 +242,14 @@ const EnhancedSkillsTable = ({ loading = false }) => {
           </button>
         </form>
       </Modal>
-
-      <div className="px-4 py-8 h-[100vh] overflow-y-auto">
+      <div className="px-4 py-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">
           Skills Overview
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
             onClick={toggleModal}
-            className="bg-white dark:bg-[#071114] py-4 rounded-xl shadow-lg overflow-hidden flex flex-col justify-center items-center transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer"
+            className="bg-white dark:bg-[#071114] py-4 rounded-xl shadow-lg flex flex-col justify-center items-center transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer"
           >
             <BiPlusCircle className="w-12 h-12 text-blue-600 dark:text-blue-400 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
