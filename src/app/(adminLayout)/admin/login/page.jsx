@@ -1,7 +1,10 @@
 "use client";
 
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { setUser } from "@/redux/features/auth/authSlice";
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
 import {
   FaUser,
   FaLock,
@@ -11,12 +14,17 @@ import {
   FaMoon,
 } from "react-icons/fa";
 import { MdLightMode } from "react-icons/md";
+import { useAppDispatch } from "@/redux/hook";
+import { useRouter } from "next/navigation";
 
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("portfolio.fahim.admin123@gmail.com");
+  const [password, setPassword] = useState("12345");
   const [theme, setTheme] = useState("light");
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch()
+  const router = useRouter()
 
   const handleSwitchThemes = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -39,10 +47,34 @@ const AdminLogin = () => {
     }
   }, [theme]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login attempted with:", { email, password });
-    toast.success("logged in");
+    
+    const loadingToastId = toast.loading("Logging in...");
+  
+    const data = {
+      email,
+      password,
+    };
+  
+    try {
+      const res = await login(data).unwrap();
+  
+      toast.dismiss(loadingToastId);
+      toast.success("Logged in successfully!");
+  
+      if (res.data.accessToken) {
+        const decodedUser = jwtDecode(res.data.accessToken);
+  
+        dispatch(setUser({
+          user: decodedUser,
+          token: res.data.accessToken,
+        }));
+        router.push("/admin/dashboard")
+      }
+    } catch (error) {
+      toast.dismiss(loadingToastId);
+    }
   };
 
   return (

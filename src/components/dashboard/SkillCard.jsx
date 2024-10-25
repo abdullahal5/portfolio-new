@@ -274,22 +274,20 @@ const SkillCard = ({ item, loading = false }) => {
                 </span>
               </div>
             </div>
-            {/* <div className="gap-2 flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="gap-2 flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <button
                 onClick={() => handleEditSkill(item)}
                 className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 transition-colors duration-300"
               >
                 <BiEdit className="w-5 h-5" />
-                <span className="sr-only">Edit</span>
               </button>
               <button
                 onClick={() => handleDeleteSkill(item.id)}
                 className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-200 transition-colors duration-300"
               >
                 <BsTrash2 className="w-5 h-5" />
-                <span className="sr-only">Delete</span>
               </button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link"; // Import Link from Next.js
 import { MdBorderVertical } from "react-icons/md";
 import {
   FaChevronLeft,
@@ -14,7 +15,6 @@ import {
   FaBlog,
 } from "react-icons/fa";
 import { MdLightMode, MdClose } from "react-icons/md";
-import { AiFillSetting } from "react-icons/ai";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Sidebar() {
@@ -22,7 +22,6 @@ export default function Sidebar() {
   const [theme, setTheme] = useState("light");
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const router = useRouter();
-
   const pathname = usePathname();
 
   useEffect(() => {
@@ -44,11 +43,6 @@ export default function Sidebar() {
     const newTheme = theme === "light" ? "dark" : "light";
     localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
-  };
-
-  const navigate = (path) => {
-    router.push(path);
-    setIsMobileOpen(false);
   };
 
   const closeSidebar = () => {
@@ -79,28 +73,28 @@ export default function Sidebar() {
             icon={<FaHome />}
             text="Dashboard"
             expanded={expanded}
-            onClick={() => navigate("/admin/dashboard")}
+            path="/admin/dashboard"
             active={pathname === "/admin/dashboard"}
           />
           <SidebarItem
             icon={<FaTasks />}
             text="Projects"
             expanded={expanded}
-            onClick={() => navigate("/admin/dashboard/projects")}
+            path="/admin/dashboard/projects"
             active={pathname === "/admin/dashboard/projects"}
           />
           <SidebarItem
             icon={<FaToolbox />}
             text="Skills"
             expanded={expanded}
-            onClick={() => navigate("/admin/dashboard/skills")}
+            path="/admin/dashboard/skills"
             active={pathname === "/admin/dashboard/skills"}
           />
           <SidebarItem
             icon={<FaBlog />}
             text="Blogs"
             expanded={expanded}
-            onClick={() => navigate("/admin/dashboard/blogs")}
+            path="/admin/dashboard/blogs"
             active={pathname === "/admin/dashboard/blogs"}
           />
         </ul>
@@ -120,7 +114,7 @@ export default function Sidebar() {
 
         <div className="border-t border-gray-200 dark:border-gray-700 flex p-3">
           <Image
-            src="https://i.ibb.co.com/R33dDRV/HTML5.png"
+            src="https://i.ibb.co/com/R33dDRV/HTML5.png"
             width={40}
             height={40}
             className="rounded-md"
@@ -186,28 +180,28 @@ export default function Sidebar() {
                 icon={<FaHome />}
                 text="Dashboard"
                 expanded={expanded}
-                onClick={() => navigate("/admin/dashboard")}
+                path="/admin/dashboard"
                 active={pathname === "/admin/dashboard"}
               />
               <SidebarItem
                 icon={<FaTasks />}
                 text="Projects"
                 expanded={expanded}
-                onClick={() => navigate("/admin/dashboard/projects")}
+                path="/admin/dashboard/projects"
                 active={pathname === "/admin/dashboard/projects"}
               />
               <SidebarItem
                 icon={<FaToolbox />}
                 text="Skills"
                 expanded={expanded}
-                onClick={() => navigate("/admin/dashboard/skills")}
+                path="/admin/dashboard/skills"
                 active={pathname === "/admin/dashboard/skills"}
               />
               <SidebarItem
                 icon={<FaBlog />}
                 text="Blogs"
                 expanded={expanded}
-                onClick={() => navigate("/admin/dashboard/blogs")}
+                path="/admin/dashboard/blogs"
                 active={pathname === "/admin/dashboard/blogs"}
               />
             </ul>
@@ -231,34 +225,28 @@ export default function Sidebar() {
   );
 }
 
-function SidebarItem({ icon, text, expanded, onClick, active }) {
+function SidebarItem({ icon, text, expanded, path, active }) {
   return (
     <li
       className={`relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors duration-200
-        ${
-          active
-            ? "bg-indigo-100 text-indigo-800 dark:bg-gray-700 dark:text-white"
-            : "text-gray-600 dark:text-gray-300"
-        }
+        ${active
+          ? "bg-indigo-100 text-indigo-800 dark:bg-gray-700 dark:text-white"
+          : "text-gray-600 dark:text-gray-300"}
         hover:bg-indigo-50 dark:hover:bg-gray-800
       `}
-      onClick={onClick}
     >
-      <span className="text-xl">{icon}</span>
-      <span
-        className={`overflow-hidden transition-all duration-200 ${
-          expanded ? "w-52 ml-3" : "w-0"
-        }`}
-      >
-        {text}
-      </span>
-      {!expanded && (
-        <div className="absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 dark:bg-gray-800 dark:text-white">
+      <Link href={path} className="flex items-center w-full">
+        <span className="text-xl">{icon}</span>
+        <span
+          className={`overflow-hidden transition-all duration-200 ${
+            expanded ? "ml-3" : "hidden"
+          }`}
+        >
           {text}
-        </div>
-      )}
+        </span>
+      </Link>
     </li>
   );
 }
