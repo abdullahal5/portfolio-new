@@ -7,6 +7,11 @@ import { BsTrash2 } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import axios from "axios";
+import {
+  useDeleteSkillByIdMutation,
+  useUpdateSkillByIdMutation,
+} from "@/redux/features/skills/skillApi";
+import toast from "react-hot-toast";
 
 const SkillCard = ({ item, loading = false }) => {
   const [isSkillAddModalOpen, setIsSkillAddModalOpen] = useState(false);
@@ -15,6 +20,8 @@ const SkillCard = ({ item, loading = false }) => {
   const [image, setImage] = useState(item.image || "");
   const [imagePreview, setImagePreview] = useState("");
   const [progress, setProgress] = useState("");
+  const [skillUpdate] = useUpdateSkillByIdMutation();
+  const [deleteSkill] = useDeleteSkillByIdMutation();
 
   const handleEditSkill = (skill) => {
     setIsSkillAddModalOpen(true);
@@ -28,8 +35,19 @@ const SkillCard = ({ item, loading = false }) => {
     setImage(item.image);
   }, [item]);
 
-  const handleDeleteSkill = (id) => {
-    console.log("Delete skill clicked for id:", id);
+  const handleDeleteSkill = async () => {
+    const loadingToastId = toast.loading("Deleting skill...");
+
+    try {
+      await deleteSkill(item?._id);
+
+      toast.success("Skill deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting skill:", error);
+      toast.error("Failed to delete skill. Please try again.");
+    } finally {
+      toast.dismiss(loadingToastId);
+    }
   };
 
   const toggleModal = () => {
@@ -48,8 +66,9 @@ const SkillCard = ({ item, loading = false }) => {
 
     let uploadedImageUrl = image;
 
+    const loadingToastId = toast.loading("Updating Skill...");
+
     if (uploadedImageUrl) {
-      console.log("ok");
       const formData = new FormData();
       formData.append("image", image);
 
@@ -59,21 +78,30 @@ const SkillCard = ({ item, loading = false }) => {
           formData
         );
         uploadedImageUrl = response.data.data.url;
-        console.log(uploadedImageUrl);
       } catch (error) {
         console.error("Error uploading image:", error);
+        toast.error("Error uploading image. Please try again.");
         return;
+      } finally {
+        toast.dismiss(loadingToastId);
       }
     }
 
-    console.log({
+    const skillData = {
       name,
       tag,
       image: uploadedImageUrl,
       progress,
-    });
+    };
 
-    toggleModal();
+    const res = await skillUpdate({ id: item?._id, skillData });
+
+    if (res.data.success) {
+      toast.success("Skill updated successfully!");
+      toggleModal();
+    } else {
+      toast.error("Failed to update skill. Please try again.");
+    }
   };
 
   const handleFileChange = (e) => {

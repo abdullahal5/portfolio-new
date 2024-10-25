@@ -1,19 +1,19 @@
 import { NextResponse } from "next/server";
 
 export function middleware(req) {
-  const { pathname } = req.nextUrl;
+  // const { pathname } = req.nextUrl;
 
-  const token = req.cookies.get('role');
+  // const token = req.cookies.get('role');
 
-  console.log(token);
+  // console.log(token);
 
-  if (pathname.startsWith("/admin/dashboard") && !token) {
-    return NextResponse.redirect(new URL("/", req.url));
-  }
+  // if (pathname.startsWith("/admin/dashboard") && !token) {
+  //   return NextResponse.redirect(new URL("/", req.url));
+  // }
 
-  return NextResponse.next();
+  // return NextResponse.next();
 }
 
-export const config = {
-  matcher: ["/admin/dashboard/:path*"],
-};
+// export const config = {
+//   matcher: ["/admin/dashboard/:path*"],
+// };

@@ -1,40 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Skeleton from "react-loading-skeleton";
-import SkillLevel from "@/components/home/SkillLevel";
 import { BiEdit, BiPlusCircle } from "react-icons/bi";
 import { BsTrash2 } from "react-icons/bs";
 import Modal from "@/components/dashboard/Modal";
 import SkillCard from "@/components/dashboard/SkillCard";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import ProjectCard from "@/components/dashboard/ProjectCard";
+import {
+  useCreateSkillMutation,
+  useGetAllSkillsQuery,
+} from "@/redux/features/skills/skillApi";
 
-const EnhancedSkillsTable = ({ loading = false }) => {
-  const [skills, setSkills] = useState([]);
+const EnhancedSkillsTable = () => {
   const [isSkillAddModalOpen, setIsSkillAddModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
   const [image, setImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
   const [progress, setProgress] = useState("");
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await axios.get("/skill.json");
-        console.log(res.data);
-        if (res) {
-          setSkills(res.data);
-        }
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+  const [skill] = useCreateSkillMutation();
+  const { data: skills, isLoading } = useGetAllSkillsQuery(undefined);
 
   const toggleModal = () => {
     if (isSkillAddModalOpen === false) {
@@ -66,12 +52,16 @@ const EnhancedSkillsTable = ({ loading = false }) => {
 
         uploadedImageUrl = response.data.data.url;
 
-        console.log({
+        const res = await skill({
           name,
           tag,
           image: uploadedImageUrl,
           progress,
         });
+
+        if (res.data.success) {
+          toggleModal();
+        }
 
         toast.dismiss(toastId);
 
@@ -257,7 +247,7 @@ const EnhancedSkillsTable = ({ loading = false }) => {
             </h3>
           </div>
 
-          {skills.map((item) => (
+          {skills?.data?.map((item) => (
             <SkillCard key={item.id} item={item} />
           ))}
         </div>
