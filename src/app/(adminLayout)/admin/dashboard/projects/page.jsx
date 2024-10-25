@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ProjectCard from "@/components/dashboard/ProjectCard";
 import Modal from "@/components/dashboard/Modal";
 import toast from "react-hot-toast";
+import {
+  useCreateProjectMutation,
+  useGetAllProjectsQuery,
+} from "@/redux/features/projects/projectsApi";
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
   const [isSkillAddModalOpen, setIsSkillAddModalOpen] = useState(false);
   const [showPreviewImage, setShowPreviewImage] = useState({
     coverImage: "",
@@ -26,6 +29,8 @@ const Projects = () => {
     githubLink: "",
     LiveLink: "",
   });
+  const [project] = useCreateProjectMutation();
+  const { data: projects } = useGetAllProjectsQuery(undefined);
 
   const toggleModal = () => {
     setIsSkillAddModalOpen(false);
@@ -45,21 +50,6 @@ const Projects = () => {
       image: "",
     });
   };
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await axios.get("/project.json");
-        if (res.data) {
-          setProjects(res.data);
-        }
-      } catch (error) {
-        console.error("Error fetching projects:", error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -118,14 +108,15 @@ const Projects = () => {
         features: formData?.features.split("\n").map((item) => item.trim()),
         tag: formData?.tag?.split(/,\s*|,/).map((item) => item.trim()),
         githubLink: formData?.githubLink,
-        LiveLink: formData?.LiveLink,
+        liveLink: formData?.LiveLink,
       };
 
-      console.log(data);
+      const res = await project(data);
 
-      if (data) {
+      if (res?.data) {
+        toggleModal();
         toast.dismiss(toastId);
-        toast.success("Project added successfully!");
+        toast.success("Project updated successfully!");
       }
     } catch (error) {
       toast.dismiss(toastId);
@@ -370,7 +361,7 @@ const Projects = () => {
               </h2>
             </div>
           </div>
-          {projects.map((project) => (
+          {projects?.data?.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>

@@ -6,6 +6,7 @@ import { FiEdit2, FiTrash2, FiArrowRight, FiTag } from "react-icons/fi";
 import Modal from "./Modal";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { useDeleteProjectMutation, useUpdateProjectByIdMutation } from "@/redux/features/projects/projectsApi";
 
 const ProjectCard = ({ project, onEdit, onDelete }) => {
   const [isSkillAddModalOpen, setIsSkillAddModalOpen] = useState(false);
@@ -22,8 +23,10 @@ const ProjectCard = ({ project, onEdit, onDelete }) => {
     features: project.features?.join("\n") || "",
     tag: project.tag?.join(", ") || "",
     githubLink: project.githubLink || "",
-    LiveLink: project.LiveLink || "",
+    liveLink: project.liveLink || "",
   });
+  const [updateProject] = useUpdateProjectByIdMutation();
+  const [deleteProject] = useDeleteProjectMutation()
 
   const toggleModal = () => {
     setIsSkillAddModalOpen(false);
@@ -65,7 +68,7 @@ const ProjectCard = ({ project, onEdit, onDelete }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const toastId = toast.loading("Adding a project...");
+    const toastId = toast.loading("Updating a project...");
 
     let uploadedCoverImageUrl = formData?.coverImage;
     let uploadedImageUrl = formData?.image;
@@ -104,15 +107,31 @@ const ProjectCard = ({ project, onEdit, onDelete }) => {
         LiveLink: formData?.LiveLink,
       };
 
-      console.log(data);
+      const res = await updateProject({ id: project?._id, projectData: data });
 
-      if (data) {
+      if (res?.data.success) {
+        toggleModal();
         toast.dismiss(toastId);
         toast.success("Project added successfully!");
       }
     } catch (error) {
       toast.dismiss(toastId);
       toast.error(`Error: ${error.message}`);
+    }
+  };
+
+  const handleDeleteProject = async () => {
+    const loadingToastId = toast.loading("Deleting skill...");
+
+    try {
+      await deleteProject(project?._id);
+
+      toast.success("Skill deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting skill:", error);
+      toast.error("Failed to delete skill. Please try again.");
+    } finally {
+      toast.dismiss(loadingToastId);
     }
   };
 
@@ -319,7 +338,7 @@ const ProjectCard = ({ project, onEdit, onDelete }) => {
                 type="url"
                 id="LiveLink"
                 name="LiveLink"
-                defaultValue={formData.LiveLink}
+                defaultValue={formData.liveLink}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-[#0d2128] dark:border-gray-600 dark:text-white"
               />
@@ -371,6 +390,7 @@ const ProjectCard = ({ project, onEdit, onDelete }) => {
           <button
             className="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
             aria-label={`Delete ${project.title}`}
+            onClick={handleDeleteProject}
           >
             <FiTrash2 className="text-xl" />
           </button>
