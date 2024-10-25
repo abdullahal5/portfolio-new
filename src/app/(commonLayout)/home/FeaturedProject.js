@@ -1,21 +1,10 @@
 "use client";
 import ProjectsC from "@/components/home/ProjectsC";
 import SectionTitle from "@/components/home/SectionTitle";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useGetAllProjectsQuery } from "@/redux/features/projects/projectsApi";
 
 const FeaturedProject = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = async () => {
-    axios.get("/project.json").then((res) => setData(res.data));
-  };
-
-  useEffect(() => {
-    fetchData();
-    setLoading(false);
-  }, []);
+  const { data: projects, isFetching } = useGetAllProjectsQuery(undefined);
 
   return (
     <div className="mx-5">
@@ -23,11 +12,11 @@ const FeaturedProject = () => {
 
       <div className="flex items-center justify-center">
         <div className="">
-          {loading && data.length <= 0 ? (
+          {isFetching && projects?.data?.length <= 0 ? (
             <p>loading...</p>
           ) : (
             <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 items-center justify-center gap-5">
-              {data?.slice(0, 2).map((item) => (
+              {projects?.data?.slice(0, 2).map((item) => (
                 <ProjectsC
                   key={item.id}
                   title={item.title}

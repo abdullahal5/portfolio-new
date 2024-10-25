@@ -2,19 +2,8 @@ import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SkillLevel from "./SkillLevel";
-import { useEffect, useState } from "react";
 
-const SkillCard = ({ item }) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
+const SkillCard = ({ item, loading }) => {
   return (
     <div className="border dark:border-neutral-800 group lg:w-[330px] md:w-[330px] w-[300px] h-36 dark:bg-black bg-white rounded-lg py-3 text-zinc-700 shadow-md dark:text-zinc-300">
       <div className="flex">

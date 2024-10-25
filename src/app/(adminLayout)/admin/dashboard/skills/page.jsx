@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { BiEdit, BiPlusCircle } from "react-icons/bi";
-import { BsTrash2 } from "react-icons/bs";
+import { BiPlusCircle } from "react-icons/bi";
 import Modal from "@/components/dashboard/Modal";
 import SkillCard from "@/components/dashboard/SkillCard";
 import axios from "axios";
@@ -20,7 +19,7 @@ const EnhancedSkillsTable = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [progress, setProgress] = useState("");
   const [skill] = useCreateSkillMutation();
-  const { data: skills, isLoading } = useGetAllSkillsQuery(undefined);
+  const { data: skills } = useGetAllSkillsQuery(undefined);
 
   const toggleModal = () => {
     if (isSkillAddModalOpen === false) {
