@@ -20,7 +20,7 @@ const authSlice = createSlice({
         role: "Admin",
       };
       state.token = token;
-      Cookies.set("role", "Admin", { expires: 1 });
+      Cookies.set("role", "Admin", { expires: 1, secure: true });
     },
     logout: (state) => {
       state.user = null;

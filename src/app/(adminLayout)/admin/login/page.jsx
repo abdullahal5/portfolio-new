@@ -19,8 +19,8 @@ import { useRouter } from "next/navigation";
 
 const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("portfolio.fahim.admin123@gmail.com");
-  const [password, setPassword] = useState("12345");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [theme, setTheme] = useState("light");
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch()

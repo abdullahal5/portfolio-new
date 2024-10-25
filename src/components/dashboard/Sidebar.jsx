@@ -114,7 +114,7 @@ export default function Sidebar() {
 
         <div className="border-t border-gray-200 dark:border-gray-700 flex p-3">
           <Image
-            src="https://i.ibb.co/com/R33dDRV/HTML5.png"
+            src="https://i.ibb.co.com/MpCfyyL/download.png"
             width={40}
             height={40}
             className="rounded-md"
@@ -127,7 +127,7 @@ export default function Sidebar() {
           >
             <div className="leading-4">
               <h4 className="font-semibold text-gray-800 dark:text-gray-200">
-                John Doe
+                Admin
               </h4>
               <span className="text-xs text-gray-600 dark:text-gray-400">
                 johndoe@gmail.com

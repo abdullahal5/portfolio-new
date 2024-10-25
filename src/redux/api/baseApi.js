@@ -3,7 +3,7 @@ import { logout } from "../features/auth/authSlice";
 import toast from "react-hot-toast";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: "https://portfolio-backend-nu-teal.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const state = getState();

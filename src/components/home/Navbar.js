@@ -27,6 +27,10 @@ const Navbar = () => {
       path: "/projects",
       name: "Projects",
     },
+    {
+      path: "/blogs",
+      name: "Blogs",
+    },
     // {
     //   path: "/achievements",
     //   name: "Achievements",
@@ -71,7 +75,7 @@ const Navbar = () => {
                 />
               </Link>
             </div>
-            <div className="flex items-center justify-between gap-10 tracking-wider">
+            <div className="flex items-center justify-between gap-5 tracking-wider">
               {routes.map((item) => (
                 <Link
                   key={Math.random()}
