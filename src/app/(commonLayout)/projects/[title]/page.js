@@ -130,7 +130,7 @@ const ProjectDetails = ({ params }) => {
                     <IoCodeSlashOutline className="inline" /> <span>Code</span>
                   </a>
                   <a
-                    href={data?.LiveLink}
+                    href={data?.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-r-full border-t border-b border-r border-violet-500 p-3 flex items-center gap-2 text-xl text-zinc-700 dark:text-zinc-300 hover:bg-white dark:hover:bg-neutral-800"

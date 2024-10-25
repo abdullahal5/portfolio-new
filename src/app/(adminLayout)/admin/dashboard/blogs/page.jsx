@@ -2,59 +2,32 @@
 import BlogCard from "@/components/dashboard/BlogCard";
 import Modal from "@/components/dashboard/Modal";
 import TextEditor from "@/components/dashboard/TextEditor";
+import {
+  useCreateBlogMutation,
+  useGetAllBlogsQuery,
+} from "@/redux/features/blogs/blogsApi";
+import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
-
-const blogPosts = [
-  {
-    title: "The Future of AI in Web Development",
-    subtitle:
-      "How artificial intelligence is reshaping the way we build websites",
-    coverImage:
-      "https://img.freepik.com/free-photo/photorealistic-view-tree-nature-with-branches-trunk_23-2151478104.jpg?ga=GA1.1.196076015.1725610901&semt=ais_hybrid",
-    category: "Technology",
-    content: `
-      <p>Artificial intelligence (AI) is revolutionizing various industries, and web development is no exception. From personalized user experiences to automated code generation, AI is transforming the way websites are built and maintained.</p>
-      <p><strong>AI-powered tools</strong> can help developers create more efficient, responsive, and user-friendly web applications. In this article, we explore the future possibilities and trends of AI in web development.</p>
-      <h2>The Role of AI in Automating Web Development</h2>
-      <p>AI is already being used to generate code, design layouts, and even optimize performance. As AI continues to evolve, it will further enhance the developer's workflow by automating repetitive tasks.</p>
-    `,
-  },
-  {
-    title: "Mastering CSS Grid Layout",
-    subtitle: "A comprehensive guide to creating complex layouts with ease",
-    coverImage:
-      "https://img.freepik.com/free-photo/cascade-boat-clean-china-natural-rural_1417-1356.jpg?ga=GA1.1.196076015.1725610901&semt=ais_hybrid",
-    category: "Web Design",
-    content: `
-      <p>CSS Grid Layout is a powerful tool for creating complex and responsive web designs. It allows developers to define grid-based layouts, which are flexible and adaptable to different screen sizes.</p>
-      <p><strong>Grid systems</strong> have been used in print design for centuries, and now they are becoming a standard in web design. This guide will take you through the basics of CSS Grid and how to use it to create stunning layouts.</p>
-      <h2>Getting Started with CSS Grid</h2>
-      <p>To use CSS Grid, you need to define a grid container and its rows and columns. With a few simple properties, you can create a responsive and adaptable grid layout for any project.</p>
-    `,
-  },
-  {
-    title: "The Rise of Serverless Architecture",
-    subtitle: "Exploring the benefits and challenges of going serverless",
-    coverImage:
-      "https://img.freepik.com/free-photo/beautiful-shot-tree-savanna-plains-with-blue-sky_181624-21992.jpg?ga=GA1.1.196076015.1725610901&semt=ais_hybrid",
-    category: "Backend",
-    content: `
-      <p>Serverless architecture is becoming increasingly popular as it allows developers to build and deploy applications without managing the underlying infrastructure. With serverless, you only pay for the resources you use, which can result in cost savings.</p>
-      <p><strong>Benefits of serverless</strong> include scalability, reduced maintenance, and quicker deployment times. However, it also comes with challenges such as vendor lock-in and potential latency issues.</p>
-      <h2>How Serverless Architecture Works</h2>
-      <p>In a serverless architecture, cloud providers handle the scaling and infrastructure management. Developers write functions that are executed in response to events, and the cloud provider manages the rest.</p>
-    `,
-  },
-];
 
 const BlogPage = () => {
   const [isBlogAddModalOpen, setIsBlogAddModalOpen] = useState(false);
   const [coverImagePreview, setCoverImagePreview] = useState(null);
   const [value, setValue] = useState("");
+  const { data: blogs } = useGetAllBlogsQuery(undefined);
+  const [createBlog] = useCreateBlogMutation();
 
-  console.log(value);
+  const uploadToImgbb = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const response = await axios.post(
+      `https://api.imgbb.com/1/upload?key=228f07b239d69be9bcc9d7f97fbf57de`,
+      formData
+    );
+    return response.data.data.url;
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -63,65 +36,34 @@ const BlogPage = () => {
     const sub = e.target.sub.value;
     const category = e.target.category.value;
     const content = value;
+    const coverImageFile = e.target.coverImage.files[0];
 
-    const data = {
-      title,
-      sub,
-      category,
-      content,
-    };
+    let uploadedCoverImageUrl = null;
 
-    console.log(data);
+    try {
+      if (coverImageFile) {
+        uploadedCoverImageUrl = await uploadToImgbb(coverImageFile);
+      }
 
-    // const toastId = toast.loading("Adding a project...");
+      if (coverImageFile) {
+        const data = {
+          title,
+          subtitle: sub,
+          category,
+          content,
+          coverImage: uploadedCoverImageUrl,
+        };
 
-    // let uploadedCoverImageUrl = formData?.coverImage;
-    // let uploadedImageUrl = formData?.image;
+        const res = await createBlog(data);
+        console.log(res);
 
-    // const uploadToImgbb = async (file) => {
-    //   const formData = new FormData();
-    //   formData.append("image", file);
-
-    //   const response = await axios.post(
-    //     `https://api.imgbb.com/1/upload?key=228f07b239d69be9bcc9d7f97fbf57de`,
-    //     formData
-    //   );
-    //   return response.data.data.url;
-    // };
-
-    // try {
-    //   if (formData.coverImage) {
-    //     uploadedCoverImageUrl = await uploadToImgbb(formData.coverImage);
-    //   }
-
-    //   if (formData.image) {
-    //     uploadedImageUrl = await uploadToImgbb(formData.image);
-    //   }
-
-    //   const data = {
-    //     title: formData?.title,
-    //     coverImage: uploadedCoverImageUrl,
-    //     image: uploadedImageUrl,
-    //     sub: formData?.sub,
-    //     technologies: formData?.technologies
-    //       ?.split(/,\s*|,/)
-    //       .map((item) => item.trim()),
-    //     features: formData?.features.split("\n").map((item) => item.trim()),
-    //     tag: formData?.tag?.split(/,\s*|,/).map((item) => item.trim()),
-    //     githubLink: formData?.githubLink,
-    //     LiveLink: formData?.LiveLink,
-    //   };
-
-    //   console.log(data);
-
-    //   if (data) {
-    //     toast.dismiss(toastId);
-    //     toast.success("Project added successfully!");
-    //   }
-    // } catch (error) {
-    //   toast.dismiss(toastId);
-    //   toast.error(`Error: ${error.message}`);
-    // }
+        if (res) {
+          toggleModal();
+        }
+      }
+    } catch (error) {
+      console.error("Error uploading image or creating blog:", error);
+    }
   };
 
   const toggleModal = () => {
@@ -299,7 +241,7 @@ const BlogPage = () => {
               </p>
             </div>
           </div>
-          {blogPosts.map((post, index) => (
+          {blogs?.data?.map((post, index) => (
             <BlogCard key={index} {...post} />
           ))}
         </div>

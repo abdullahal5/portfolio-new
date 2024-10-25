@@ -27,7 +27,7 @@ const Projects = () => {
     features: "",
     tag: "",
     githubLink: "",
-    LiveLink: "",
+    liveLink: "",
   });
   const [project] = useCreateProjectMutation();
   const { data: projects } = useGetAllProjectsQuery(undefined);
@@ -43,7 +43,7 @@ const Projects = () => {
       features: "",
       tag: "",
       githubLink: "",
-      LiveLink: "",
+      liveLink: "",
     });
     setShowPreviewImage({
       coverImage: "",
@@ -108,7 +108,7 @@ const Projects = () => {
         features: formData?.features.split("\n").map((item) => item.trim()),
         tag: formData?.tag?.split(/,\s*|,/).map((item) => item.trim()),
         githubLink: formData?.githubLink,
-        liveLink: formData?.LiveLink,
+        liveLink: formData?.liveLink,
       };
 
       const res = await project(data);
@@ -307,15 +307,15 @@ const Projects = () => {
 
             <div>
               <label
-                htmlFor="LiveLink"
+                htmlFor="liveLink"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
                 Live Link
               </label>
               <input
                 type="url"
-                id="LiveLink"
-                name="LiveLink"
+                id="liveLink"
+                name="liveLink"
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-[#0d2128] dark:border-gray-600 dark:text-white"
               />

@@ -4,22 +4,33 @@ import { useState } from "react";
 import { FiArrowRight, FiEdit2, FiTrash2 } from "react-icons/fi";
 import TextEditor from "./TextEditor";
 import Modal from "./Modal";
+import axios from "axios";
+import {
+  useDeleteBlogMutation,
+  useUpdateBlogMutation,
+} from "@/redux/features/blogs/blogsApi";
+import toast from "react-hot-toast";
 
-const BlogCard = ({
-  title,
-  subtitle,
-  coverImage,
-  category,
-  content,
-  onEdit,
-  onDelete,
-}) => {
+const BlogCard = ({ _id, title, subtitle, coverImage, category, content }) => {
   const [isBlogAddModalOpen, setIsBlogAddModalOpen] = useState(false);
   const [coverImagePreview, setCoverImagePreview] = useState(null);
   const [value, setValue] = useState("");
+  const [updateBlog] = useUpdateBlogMutation();
+  const [deleteBlog] = useDeleteBlogMutation();
 
   const toggleModal = () => {
     setIsBlogAddModalOpen(false);
+  };
+
+  const uploadToImgbb = async (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const response = await axios.post(
+      `https://api.imgbb.com/1/upload?key=228f07b239d69be9bcc9d7f97fbf57de`,
+      formData
+    );
+    return response.data.data.url;
   };
 
   const handleFormSubmit = async (e) => {
@@ -28,65 +39,33 @@ const BlogCard = ({
     const sub = e.target.sub.value;
     const category = e.target.category.value;
     const content = value;
+    const coverImageFile = e.target.coverImage.files[0];
 
-    const data = {
-      title,
-      sub,
-      category,
-      content,
-    };
+    let uploadedCoverImageUrl = null || coverImage;
 
-    console.log(data);
+    try {
+      if (coverImageFile) {
+        uploadedCoverImageUrl = await uploadToImgbb(coverImageFile);
+      }
 
-    // const toastId = toast.loading("Adding a project...");
+      if (uploadedCoverImageUrl) {
+        const blogData = {
+          title,
+          subtitle: sub,
+          category,
+          content,
+          coverImage: uploadedCoverImageUrl,
+        };
 
-    // let uploadedCoverImageUrl = formData?.coverImage;
-    // let uploadedImageUrl = formData?.image;
+        const res = await updateBlog({ id: _id, blogData });
 
-    // const uploadToImgbb = async (file) => {
-    //   const formData = new FormData();
-    //   formData.append("image", file);
-
-    //   const response = await axios.post(
-    //     `https://api.imgbb.com/1/upload?key=228f07b239d69be9bcc9d7f97fbf57de`,
-    //     formData
-    //   );
-    //   return response.data.data.url;
-    // };
-
-    // try {
-    //   if (formData.coverImage) {
-    //     uploadedCoverImageUrl = await uploadToImgbb(formData.coverImage);
-    //   }
-
-    //   if (formData.image) {
-    //     uploadedImageUrl = await uploadToImgbb(formData.image);
-    //   }
-
-    //   const data = {
-    //     title: formData?.title,
-    //     coverImage: uploadedCoverImageUrl,
-    //     image: uploadedImageUrl,
-    //     sub: formData?.sub,
-    //     technologies: formData?.technologies
-    //       ?.split(/,\s*|,/)
-    //       .map((item) => item.trim()),
-    //     features: formData?.features.split("\n").map((item) => item.trim()),
-    //     tag: formData?.tag?.split(/,\s*|,/).map((item) => item.trim()),
-    //     githubLink: formData?.githubLink,
-    //     LiveLink: formData?.LiveLink,
-    //   };
-
-    //   console.log(data);
-
-    //   if (data) {
-    //     toast.dismiss(toastId);
-    //     toast.success("Project added successfully!");
-    //   }
-    // } catch (error) {
-    //   toast.dismiss(toastId);
-    //   toast.error(`Error: ${error.message}`);
-    // }
+        if (res) {
+          toggleModal();
+        }
+      }
+    } catch (error) {
+      console.error("Error uploading image or creating blog:", error);
+    }
   };
 
   const handleImageChange = (e) => {
@@ -97,6 +76,21 @@ const BlogCard = ({
         setCoverImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDeleteBlog = async () => {
+    const loadingToastId = toast.loading("Deleting Blog...");
+
+    try {
+      await deleteBlog(_id);
+
+      toast.success("Blog deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting skill:", error);
+      toast.error("Failed to delete skill. Please try again.");
+    } finally {
+      toast.dismiss(loadingToastId);
     }
   };
 
@@ -214,18 +208,16 @@ const BlogCard = ({
             </div>
 
             <div className="col-span-2">
-              {coverImagePreview && (
-                <div className="mt-4">
-                  <Image
-                    src={coverImagePreview}
-                    alt="Cover Preview"
-                    layout="responsive"
-                    width={700}
-                    height={300}
-                    className="w-full h-60 object-cover rounded-lg shadow-lg"
-                  />
-                </div>
-              )}
+              <div className="mt-4">
+                <Image
+                  src={coverImagePreview ? coverImagePreview : coverImage}
+                  alt="Cover Preview"
+                  layout="responsive"
+                  width={700}
+                  height={300}
+                  className="w-full h-60 object-cover rounded-lg shadow-lg"
+                />
+              </div>
             </div>
 
             <div className="col-span-2">
@@ -286,6 +278,7 @@ const BlogCard = ({
             <FiEdit2 className="text-indigo-500 group-hover:text-white text-xl" />
           </button>
           <button
+            onClick={handleDeleteBlog}
             className="w-10 h-10 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300"
             aria-label="Delete post"
           >
