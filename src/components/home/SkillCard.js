@@ -5,7 +5,7 @@ import SkillLevel from "./SkillLevel";
 
 const SkillCard = ({ item, loading }) => {
   return (
-    <div className="border dark:border-neutral-800 group lg:w-[330px] md:w-[330px] w-[300px] h-36 dark:bg-black bg-white rounded-lg py-3 text-zinc-700 shadow-md dark:text-zinc-300">
+    <div className="border dark:border-neutral-800 group lg:w-[330px] md:w-[330px] w-[300px] h-36 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 rounded-lg py-3 text-zinc-700 shadow-md dark:text-zinc-300">
       <div className="flex">
         <div className="w-[30%] flex flex-col justify-center items-center">
           {loading ? (

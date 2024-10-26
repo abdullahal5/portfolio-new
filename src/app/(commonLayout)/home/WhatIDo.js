@@ -8,7 +8,7 @@ const WhatIDo = () => {
     <div className="mx-5">
       <SectionTitle title={"What I Do?"} />
       <div className="flex md:flex-row lg:flex-row flex-col items-center gap-2 py-10">
-        <div className="lg:w-96 md:w-96 w-[350px] h-48 rounded-lg border justify-between pr-3 dark:bg-black dark:border-neutral-800 flex bg-white dark:text-zinc-300 text-zinc-600 group">
+        <div className="lg:w-96 md:w-96 w-[350px] h-48 rounded-lg border justify-between pr-3 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 dark:border-neutral-800 flex dark:text-zinc-300 text-zinc-600 group">
           <div className="w-[30%]">
             <BiMobileVibration
               size={"6rem"}
@@ -26,7 +26,7 @@ const WhatIDo = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-96 md:w-96 w-[350px] h-48 rounded-lg border justify-between pr-3 dark:bg-black dark:border-neutral-800 flex bg-white dark:text-zinc-300 text-zinc-600 group p-3">
+        <div className="lg:w-96 md:w-96 w-[350px] h-48 rounded-lg border justify-between pr-3 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 dark:border-neutral-800 flex dark:text-zinc-300 text-zinc-600 group p-3">
           <div className="w-[30%]">
             <FaBug
               size={"5rem"}
@@ -40,7 +40,7 @@ const WhatIDo = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-96 md:w-96 w-[350px] h-48 rounded-lg border justify-between pr-3 dark:bg-black dark:border-neutral-800 flex bg-white dark:text-zinc-300 text-zinc-600 group p-3">
+        <div className="lg:w-96 md:w-96 w-[350px] h-48 rounded-lg border justify-between pr-3 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 dark:border-neutral-800 border-gray-200 flex dark:text-zinc-300 text-zinc-600 group p-3">
           <div className="w-[30%]">
             <MdOutlineFeaturedPlayList
               size={"5rem"}

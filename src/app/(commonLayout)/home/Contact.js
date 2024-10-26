@@ -58,19 +58,19 @@ const Contact = () => {
             type="text"
             name="user_name"
             placeholder="Jhon Doe"
-            className="border border-violet-500 outline-none pl-5 rounded-lg py-3 bg-white dark:bg-black dark:text-zinc-300 lg:w-[400px] md:w-[400px] w-[300px]"
+            className="border border-violet-500 outline-none pl-5 rounded-lg py-3 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 dark:text-zinc-300 lg:w-[400px] md:w-[400px] w-[300px]"
             required
           />
           <input
             type="email"
             name="user_email"
             placeholder="Example@gmail.com"
-            className="border border-violet-500 outline-none pl-5 rounded-lg py-3 bg-white dark:bg-black dark:text-zinc-300 lg:w-[400px] md:w-[400px] w-[300px]"
+            className="border border-violet-500 outline-none pl-5 rounded-lg py-3 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 dark:text-zinc-300 lg:w-[400px] md:w-[400px] w-[300px]"
             required
           />
           <textarea
             placeholder="What's on your mind?"
-            className="border border-violet-500 outline-none pl-5 rounded-lg py-3 bg-white dark:bg-black dark:text-zinc-300 resize-none lg:w-auto md:w-auto w-[310px]"
+            className="border border-violet-500 outline-none pl-5 rounded-lg py-3 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 bg-gradient-to-l from-white to-zinc-50 dark:text-zinc-300 resize-none lg:w-auto md:w-auto w-[310px]"
             rows={7}
             name="message"
             required

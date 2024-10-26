@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         lang="en"
       >
         <body
-          className={`${roboto.className} mx-auto dark:bg-black bg-gray-50`}
+          className={`${roboto.className} mx-auto dark:bg-[#171717] bg-gray-50`}
         >
           <Toaster />
           <NextTopLoader

@@ -37,7 +37,7 @@ const Projects = () => {
           out the codebase and live site.
         </h1>
         <div className="py-10 flex lg:flex-row md:flex-row flex-col items-center lg:justify-between md:justify-between justify-center lg:gap-0 md:gap-0 gap-10">
-          <span className="text-violet-500 text-xl font-semibold border rounded-full px-5 py-3 border-violet-500 dark:bg-black bg-white">
+          <span className="text-violet-500 text-xl font-semibold border rounded-full px-5 py-3 border-violet-500 dark:bg-[#171717] bg-white">
             All Projects {input.length > 0 ? matchedProject?.length : ""}
           </span>
           <div className="relative">
@@ -46,7 +46,7 @@ const Projects = () => {
               value={input}
               placeholder="Search By Title"
               type="text"
-              className="dark:bg-black rounded-full border-violet-500 dark:text-zinc-300 text-zinc-600 border outline-none bg-white py-3 pl-5 pr-10"
+              className="dark:bg-[#171717] rounded-full border-violet-500 dark:text-zinc-300 text-zinc-600 border outline-none bg-white py-3 pl-5 pr-10"
             />
             {input?.length > 0 ? (
               <RxCross2

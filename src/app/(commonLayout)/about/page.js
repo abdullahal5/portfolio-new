@@ -43,7 +43,7 @@ const About = () => {
             <h1 className="text-center text-2xl font-semibold text-zinc-600 my-5 dark:text-zinc-300">
               Abdullah AL Fahim
             </h1>
-            <span className="text-center border mx-auto text-sm bg-gray-300 rounded-lg text-zinc-600 p-1 dark:bg-black dark:border-neutral-800 dark:text-zinc-300">
+            <span className="text-center border mx-auto text-sm bg-gray-300 rounded-lg text-zinc-600 p-1 dark:bg-[#171717] dark:border-neutral-800 dark:text-zinc-300">
               MERN Stack Developer
             </span>
             <hr className="my-5 mx-10 border-violet-500" />
@@ -189,7 +189,7 @@ const About = () => {
                 <h1 className="text-center text-xl font-semibold text-zinc-600 my-2 dark:text-zinc-300">
                   Abdullah AL Fahim
                 </h1>
-                <span className="text-center border mx-auto text-sm bg-gray-300 rounded-lg text-zinc-600 p-1 dark:bg-black dark:border-neutral-800 dark:text-zinc-300">
+                <span className="text-center border mx-auto text-sm bg-gray-300 rounded-lg text-zinc-600 p-1 dark:bg-[#171717] dark:border-neutral-800 dark:text-zinc-300">
                   MERN Stack Developer
                 </span>
               </div>
@@ -349,13 +349,13 @@ const About = () => {
             <FaCode /> SKILLS
           </h1>
           <p className="text-zinc-600 py-4 dark:text-zinc-300">
-            I&apos;m skilled in HTML5, CSS3, JavaScript, ES6,
-            ReactJS, React Router, Node JS, Express JS, MongoDB, and Firebase
-            Authentication. I&apos;m also familiar with JWT, Stripe, Tailwind
-            CSS, and Material UI. Besides these, I&apos;m used to a few tools,
-            like - Git, VS Code, Figma, Trello, Vercel, Surge and
-            Chrome Dev Tool. Currently, I&apos;m working on Redux-toolkit and
-            Typescript, and necessary packages.
+            I&apos;m skilled in HTML5, CSS3, JavaScript, ES6, ReactJS, React
+            Router, Node JS, Express JS, MongoDB, and Firebase Authentication.
+            I&apos;m also familiar with JWT, Stripe, Tailwind CSS, and Material
+            UI. Besides these, I&apos;m used to a few tools, like - Git, VS
+            Code, Figma, Trello, Vercel, Surge and Chrome Dev Tool. Currently,
+            I&apos;m working on Redux-toolkit and Typescript, and necessary
+            packages.
           </p>
 
           <h1 className="tracking-wide text-3xl font-semibold text-zinc-600 items-center pt-10 flex gap-3 dark:text-zinc-300">
@@ -397,7 +397,7 @@ const About = () => {
               </div>
             </li>
             <li className="mb-10 ms-6">
-              <span className="absolute flex items-center justify-center w-6 lg:pb-[68px] md:[68px] pb-[120px] dark:bg-black rounded-full -start-3  overflow-hidden bg-gray-50">
+              <span className="absolute flex items-center justify-center w-6 lg:pb-[68px] md:[68px] pb-[120px] dark:bg-[#171717] rounded-full -start-3  overflow-hidden bg-gray-50">
                 <FaCircleCheck
                   fontSize={"1.5rem"}
                   className="text-violet-500"
