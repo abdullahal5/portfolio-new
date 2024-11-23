@@ -31,10 +31,10 @@ const Navbar = () => {
       path: "/blogs",
       name: "Blogs",
     },
-    // {
-    //   path: "/achievements",
-    //   name: "Achievements",
-    // },
+    {
+      path: "/awards",
+      name: "Awards",
+    },
   ];
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed z-50 backdrop-blur-md backdrop:filter bg-zinc-50 dark:bg-neutral-900 dark:bg-transparent dark:bg-opacity-80 bg-opacity-60 lg:w-[1100px] md:w-[1100px] border-2 bg-transparent py-4 rounded-r-full border-gray-200 rounded-l-full mt-10 mx-auto w-full lg:block md:block hidden dark:border-violet-500/10 dark:backdrop-filter dark:border-2">
+      <nav className="fixed z-50 backdrop-blur-md backdrop:filter bg-zinc-50 dark:bg-neutral-900 dark:bg-transparent dark:bg-opacity-80 bg-opacity-60 lg:w-[1100px] md:w-[1100px] border-2 bg-transparent py-2 rounded-r-full border-gray-200 rounded-l-full mt-10 mx-auto w-full lg:block md:block hidden dark:border-violet-500/10 dark:backdrop-filter dark:border-2">
         <div className="gap-7 text-[.875rem] font-semibold text-zinc-600 uppercase">
           <div className="flex justify-between px-10 items-center">
             <div className="lg:w-auto md:w-auto w-full">
