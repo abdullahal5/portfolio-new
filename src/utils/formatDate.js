@@ -4,7 +4,7 @@ function formatDate(dateString) {
     day: "2-digit",
     month: "short",
     year: "numeric",
-  }).format(date);
+  })?.format(date);
 }
 
 export default formatDate

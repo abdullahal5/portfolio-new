@@ -6,7 +6,7 @@ const page = () => {
     <div>
       <Navbar />
       <div className="lg:pt-36 md:pt-32 pt-5">
-         award
+         Coming Soon
       </div>
       <Footer />
     </div>

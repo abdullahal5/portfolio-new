@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import formatDate from "@/utils/formatDate";
+import Link from "next/link";
 
 const BlogCard = ({ item }) => {
   return (
     <div className="flex flex-col sm:flex-row max-w-4xl mx-auto border dark:border-zinc-800 borderzin rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 dark:bg-gradient-to-l dark:from-stone-900 dark:to-neutral-900 group">
-      {/* Left Section - Image and Category */}
       <div className="w-full sm:w-1/3 relative">
         <img
           src={item.coverImage}
@@ -16,7 +16,6 @@ const BlogCard = ({ item }) => {
         </span>
       </div>
 
-      {/* Right Section - Content */}
       <div className="w-full sm:w-2/3 p-6 flex flex-col justify-between rounded-tr-lg">
         <p className="text-gray-400 text-sm">{formatDate(item.createdAt)}</p>
 
@@ -27,8 +26,9 @@ const BlogCard = ({ item }) => {
         <p className="text-gray-400 mb-4 line-clamp-3">{item.subtitle}</p>
 
         <div>
-          <a
-            href={item.link}
+          <Link
+           href={`/blogs/${item.title.replace(/\s+/g, "-").toLowerCase()}?id=${item._id}`}
+           
             className="inline-flex items-center text-indigo-500 font-medium hover:text-indigo-400 transition-colors duration-300"
           >
             Read article
@@ -46,7 +46,7 @@ const BlogCard = ({ item }) => {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
